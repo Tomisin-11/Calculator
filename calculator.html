@@ -176,8 +176,22 @@
             gap: 12px;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+        }
+
+        .section-divider {
+            width: 100%;
+            text-align: center;
+            margin: 20px 0 16px 0;
+        }
+
+        .section-label {
+            color: #666666;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
         .subject-chip {
@@ -201,6 +215,171 @@
             background: #ffffff;
             color: #000000;
             border-color: #ffffff;
+        }
+
+        /* Topic Search & Dropdown */
+        .topic-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: none;
+            animation: fadeInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .topic-section.show {
+            display: block;
+        }
+
+        /* Sticky Topic Info Bar */
+        .sticky-topic-container {
+            position: sticky;
+            top: 70px;
+            z-index: 900;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 40px;
+            margin: 0 -40px 0 -40px;
+            display: none;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .sticky-topic-container.show {
+            display: block;
+        }
+
+        @keyframes stickySlide {
+            from {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .sticky-topic-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .sticky-selected-subject {
+            font-size: 13px;
+            font-weight: 600;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sticky-arrow {
+            color: #444444;
+            font-size: 12px;
+        }
+
+        .sticky-selected-topic {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(0, 255, 136, 0.15);
+            color: #00ff88;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 700;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .topic-search {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .topic-search:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .topic-search::placeholder {
+            color: #555555;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 4px;
+        }
+
+        .topic-grid::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .topic-grid::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .topic-grid::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .topic-item {
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #aaaaaa;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .topic-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .topic-item.active {
+            background: rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+            color: #00ff88;
+            font-weight: 700;
+        }
+
+        .selected-topic-badge {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 12px;
         }
 
         /* Calculator Layout */
@@ -332,8 +511,62 @@
 
         .explanation-content {
             color: #cccccc;
+            line-height: 2;
+            font-size: 16px;
+        }
+
+        .explanation-content strong {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        .explanation-content h1,
+        .explanation-content h2,
+        .explanation-content h3 {
+            color: #ffffff;
+            font-weight: 800;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .explanation-content h1 {
+            font-size: 24px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 8px;
+        }
+
+        .explanation-content h2 {
+            font-size: 20px;
+        }
+
+        .explanation-content h3 {
+            font-size: 18px;
+        }
+
+        .explanation-content ul,
+        .explanation-content ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .explanation-content li {
+            margin: 8px 0;
             line-height: 1.8;
-            font-size: 15px;
+        }
+
+        .explanation-content code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #00ff88;
+            font-weight: 600;
+        }
+
+        .explanation-content p {
+            margin: 12px 0;
         }
 
         .explanation-placeholder {
@@ -628,6 +861,20 @@
             .upload-btn {
                 width: 100%;
             }
+
+            .sticky-topic-container {
+                padding: 12px 20px;
+                margin: 0 -20px 0 -20px;
+            }
+
+            .sticky-topic-info {
+                font-size: 12px;
+            }
+
+            .sticky-selected-topic {
+                font-size: 11px;
+                padding: 5px 10px;
+            }
         }
     </style>
 </head>
@@ -654,44 +901,65 @@
 
     <!-- Main Container -->
     <div class="container">
+        <!-- Sticky Topic Info Bar -->
+        <div class="sticky-topic-container" id="stickyTopicBar">
+            <div class="sticky-topic-info">
+                <span class="sticky-selected-subject" id="stickySubject"></span>
+                <span class="sticky-arrow">→</span>
+                <span class="sticky-selected-topic" id="stickyTopic"></span>
+            </div>
+        </div>
+
         <!-- Mode Toggle -->
         <div class="mode-toggle-container">
             <div class="mode-toggle">
                 <button class="mode-btn active" onclick="switchMode('simple')">Simple Mode</button>
                 <button class="mode-btn" onclick="switchMode('advanced')">Advanced Mode</button>
+                <button class="mode-btn" onclick="window.location.href='search.html'" style="background: rgba(0, 255, 136, 0.15); border: 1px solid rgba(0, 255, 136, 0.3); color: #00ff88;">
+                    🔍 Search Mode
+                </button>
             </div>
         </div>
 
         <!-- Subject Selector -->
         <div class="subject-selector">
+            <div class="section-divider" style="margin-top: 0;">
+                <span class="section-label">Core Subjects</span>
+            </div>
             <div class="subject-chip active" onclick="selectSubject('Mathematics')">Mathematics</div>
             <div class="subject-chip" onclick="selectSubject('Physics')">Physics</div>
             <div class="subject-chip" onclick="selectSubject('Chemistry')">Chemistry</div>
-            <div class="subject-chip" onclick="selectSubject('Statistics')">Statistics</div>
-            <div class="subject-chip" onclick="selectSubject('Engineering')">Engineering</div>
             <div class="subject-chip" onclick="selectSubject('Biology')">Biology</div>
+            <div class="subject-chip" onclick="selectSubject('Statistics')">Statistics</div>
+            
+            <div class="section-divider">
+                <span class="section-label">Advanced Courses</span>
+            </div>
+            <div class="subject-chip" onclick="selectSubject('Calculus')">Calculus</div>
+            <div class="subject-chip" onclick="selectSubject('Linear Algebra')">Linear Algebra</div>
+            <div class="subject-chip" onclick="selectSubject('Differential Equations')">Differential Equations</div>
+            <div class="subject-chip" onclick="selectSubject('Thermodynamics')">Thermodynamics</div>
+            <div class="subject-chip" onclick="selectSubject('Organic Chemistry')">Organic Chemistry</div>
+            <div class="subject-chip" onclick="selectSubject('Quantum Mechanics')">Quantum Mechanics</div>
+            <div class="subject-chip" onclick="selectSubject('Engineering')">Engineering</div>
+            <div class="subject-chip" onclick="selectSubject('Computer Science')">Computer Science</div>
+        </div>
+
+        <!-- Topic Selection Section -->
+        <div class="topic-section" id="topicSection">
+            <div class="topic-header">
+                <input type="text" id="topicSearch" class="topic-search" placeholder="Search topics..." onkeyup="filterTopics()">
+                <span id="selectedTopicBadge"></span>
+            </div>
+            <div class="topic-grid" id="topicGrid">
+                <!-- Topics will be populated by JavaScript -->
+            </div>
         </div>
 
         <!-- Calculator Layout -->
         <div class="calc-layout">
             <!-- Calculator Panel -->
             <div class="calculator-panel">
-                <!-- Image Upload Section -->
-                <div class="image-upload-section">
-                    <div class="upload-buttons">
-                        <label class="upload-btn">
-                            📁 Upload Image
-                            <input type="file" id="imageUpload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
-                        </label>
-                        <button class="upload-btn" onclick="openCamera()">📷 Take Photo</button>
-                    </div>
-                    <div class="image-preview" id="imagePreview">
-                        <img id="previewImg" src="" alt="Preview">
-                        <button class="remove-image" onclick="removeImage()">×</button>
-                        <button class="analyze-image-btn" onclick="analyzeImage()">🤖 Analyze Image</button>
-                    </div>
-                </div>
-
                 <div class="display">
                     <div class="expression" id="expression"></div>
                     <div class="result" id="result">0</div>
@@ -1069,16 +1337,115 @@
         const apiKey = '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';
         let currentExpression = '';
         let currentSubject = 'Mathematics';
+        let currentTopic = null;
         let currentMode = 'simple';
         let uploadedImage = null;
 
+        // Comprehensive topics for each subject
+        const subjectTopics = {
+            'Mathematics': [
+                'Algebra', 'Geometry', 'Trigonometry', 'Pre-Calculus', 'Number Theory',
+                'Arithmetic', 'Fractions & Decimals', 'Percentages', 'Ratios & Proportions',
+                'Exponents & Radicals', 'Polynomials', 'Quadratic Equations', 'Systems of Equations',
+                'Inequalities', 'Functions', 'Graphing', 'Sequences & Series', 'Probability',
+                'Combinatorics', 'Logarithms', 'Complex Numbers', 'Matrices'
+            ],
+            'Calculus': [
+                'Limits', 'Derivatives', 'Integration', 'Differential Calculus', 'Integral Calculus',
+                'Multivariable Calculus', 'Vector Calculus', 'Applications of Derivatives',
+                'Chain Rule', 'Product Rule', 'Quotient Rule', 'Implicit Differentiation',
+                'Related Rates', 'Optimization', 'Curve Sketching', 'Area Under Curves',
+                'Volume of Solids', 'Arc Length', 'Surface Area', 'Partial Derivatives',
+                'Multiple Integrals', 'Line Integrals', 'Green\'s Theorem', 'Stokes\' Theorem'
+            ],
+            'Physics': [
+                'Mechanics', 'Kinematics', 'Dynamics', 'Energy & Work', 'Momentum',
+                'Rotational Motion', 'Gravity', 'Oscillations', 'Waves', 'Sound',
+                'Light & Optics', 'Electricity', 'Magnetism', 'Electromagnetism',
+                'Circuits', 'Thermodynamics', 'Fluid Mechanics', 'Modern Physics',
+                'Relativity', 'Atomic Physics', 'Nuclear Physics', 'Quantum Physics'
+            ],
+            'Chemistry': [
+                'Atomic Structure', 'Periodic Table', 'Chemical Bonding', 'Stoichiometry',
+                'Chemical Reactions', 'Acids & Bases', 'Redox Reactions', 'Thermochemistry',
+                'Kinetics', 'Equilibrium', 'Solutions', 'Electrochemistry', 'Nuclear Chemistry',
+                'Organic Compounds', 'Inorganic Compounds', 'Gas Laws', 'Molecular Geometry'
+            ],
+            'Organic Chemistry': [
+                'Alkanes', 'Alkenes', 'Alkynes', 'Aromatic Compounds', 'Alcohols', 'Ethers',
+                'Aldehydes', 'Ketones', 'Carboxylic Acids', 'Esters', 'Amines', 'Amides',
+                'Polymers', 'Stereochemistry', 'Reaction Mechanisms', 'Substitution Reactions',
+                'Elimination Reactions', 'Addition Reactions', 'Oxidation-Reduction',
+                'Spectroscopy', 'NMR', 'IR Spectroscopy', 'Mass Spectrometry'
+            ],
+            'Biology': [
+                'Cell Biology', 'Genetics', 'Evolution', 'Ecology', 'Anatomy', 'Physiology',
+                'Molecular Biology', 'Biochemistry', 'Microbiology', 'Botany', 'Zoology',
+                'Immunology', 'Neuroscience', 'Developmental Biology', 'DNA & RNA',
+                'Protein Synthesis', 'Cellular Respiration', 'Photosynthesis', 'Mitosis & Meiosis'
+            ],
+            'Statistics': [
+                'Descriptive Statistics', 'Probability Theory', 'Distributions', 'Normal Distribution',
+                'Binomial Distribution', 'Poisson Distribution', 'Hypothesis Testing', 'Confidence Intervals',
+                'Regression Analysis', 'Correlation', 'ANOVA', 'Chi-Square Tests', 't-Tests',
+                'Sampling Methods', 'Central Limit Theorem', 'Standard Deviation', 'Variance',
+                'Mean, Median, Mode', 'Percentiles & Quartiles', 'Z-Scores', 'P-Values'
+            ],
+            'Linear Algebra': [
+                'Vectors', 'Matrices', 'Matrix Operations', 'Determinants', 'Eigenvalues & Eigenvectors',
+                'Linear Transformations', 'Vector Spaces', 'Basis & Dimension', 'Inner Product Spaces',
+                'Orthogonality', 'Diagonalization', 'Systems of Linear Equations', 'Gaussian Elimination',
+                'LU Decomposition', 'QR Decomposition', 'Singular Value Decomposition'
+            ],
+            'Differential Equations': [
+                'First Order ODEs', 'Second Order ODEs', 'Higher Order ODEs', 'Linear Equations',
+                'Nonlinear Equations', 'Separable Equations', 'Exact Equations', 'Integrating Factors',
+                'Homogeneous Equations', 'Bernoulli Equations', 'Laplace Transforms',
+                'Systems of ODEs', 'Partial Differential Equations', 'Boundary Value Problems',
+                'Initial Value Problems', 'Series Solutions', 'Numerical Methods'
+            ],
+            'Thermodynamics': [
+                'Laws of Thermodynamics', 'Heat Transfer', 'Enthalpy', 'Entropy', 'Gibbs Free Energy',
+                'Work & Energy', 'Heat Engines', 'Refrigeration Cycles', 'Phase Transitions',
+                'Ideal Gas Law', 'Real Gases', 'Thermodynamic Processes', 'Carnot Cycle',
+                'Otto Cycle', 'Diesel Cycle', 'Statistical Mechanics'
+            ],
+            'Quantum Mechanics': [
+                'Wave-Particle Duality', 'Schrödinger Equation', 'Wave Functions', 'Operators',
+                'Quantum States', 'Uncertainty Principle', 'Quantum Tunneling', 'Harmonic Oscillator',
+                'Hydrogen Atom', 'Angular Momentum', 'Spin', 'Quantum Entanglement',
+                'Perturbation Theory', 'Time-Dependent Systems', 'Quantum Field Theory'
+            ],
+            'Engineering': [
+                'Statics', 'Dynamics', 'Strength of Materials', 'Fluid Mechanics', 'Heat Transfer',
+                'Control Systems', 'Signal Processing', 'Circuit Analysis', 'Digital Logic',
+                'Mechanical Design', 'Structural Analysis', 'Materials Science', 'CAD/CAM',
+                'Thermodynamics', 'Electromagnetics', 'Power Systems'
+            ],
+            'Computer Science': [
+                'Algorithms', 'Data Structures', 'Programming', 'Object-Oriented Programming',
+                'Databases', 'Operating Systems', 'Computer Networks', 'Artificial Intelligence',
+                'Machine Learning', 'Computer Architecture', 'Software Engineering',
+                'Complexity Theory', 'Automata Theory', 'Compilers', 'Cybersecurity',
+                'Distributed Systems', 'Cloud Computing', 'Big O Notation', 'Sorting Algorithms',
+                'Graph Theory', 'Trees', 'Hash Tables', 'Recursion'
+            ]
+        };
+
         const advancedButtonSets = {
             'Mathematics': 'advancedMath',
+            'Calculus': 'advancedMath',
+            'Linear Algebra': 'advancedMath',
+            'Differential Equations': 'advancedMath',
             'Physics': 'advancedPhysics',
+            'Thermodynamics': 'advancedPhysics',
+            'Quantum Mechanics': 'advancedPhysics',
             'Chemistry': 'advancedChemistry',
+            'Organic Chemistry': 'advancedChemistry',
             'Statistics': 'advancedStatistics',
             'Engineering': 'advancedEngineering',
-            'Biology': 'advancedBiology'
+            'Biology': 'advancedBiology',
+            'Computer Science': 'advancedEngineering'
         };
 
         // Image Upload Functions
@@ -1129,9 +1496,8 @@
             showViewExplanationBtn();
 
             try {
-                // Extract base64 image data
-                const base64Image = uploadedImage.split(',')[1];
-
+                // For now, we'll use a workaround: analyze the image using Groq's text model
+                // with a detailed description prompt
                 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: "POST",
                     headers: { 
@@ -1139,21 +1505,18 @@
                         "Authorization": `Bearer ${apiKey}`
                     },
                     body: JSON.stringify({
-                        model: "llama-3.2-90b-vision-preview",
+                        model: "llama-3.3-70b-versatile",
                         messages: [{
                             role: "user",
-                            content: [
-                                {
-                                    type: "text",
-                                    text: `You are a ${currentSubject} tutor. Analyze this image and provide a detailed explanation. If it contains a math problem, solve it step-by-step. If it's a diagram or graph, explain what it shows. If it's text, transcribe and explain it.`
-                                },
-                                {
-                                    type: "image_url",
-                                    image_url: {
-                                        url: uploadedImage
-                                    }
-                                }
-                            ]
+                            content: `You are a ${currentSubject} tutor. I have uploaded an image that likely contains a math problem, diagram, equation, or educational content related to ${currentSubject}. 
+
+Since you cannot see the image directly, please provide:
+1. A comprehensive guide on how to solve common ${currentSubject} problems
+2. Step-by-step explanation of typical problem-solving approaches
+3. Key formulas and concepts in ${currentSubject}
+4. Tips for analyzing diagrams and graphs
+
+Please make your response educational and detailed.`
                         }],
                         temperature: 0.7,
                         max_tokens: 2000
@@ -1169,13 +1532,16 @@
                 const explanation = data.choices[0].message.content;
                 explanationContent.innerHTML = `
                     <div class="explanation-content">
+                        <p style="color: #ffaa00; margin-bottom: 16px;">⚠️ <strong>Note:</strong> Vision API is currently unavailable. Here's general guidance for ${currentSubject}:</p>
                         ${explanation.replace(/\n/g, '<br>')}
+                        <p style="color: #888888; margin-top: 16px; font-size: 13px;">💡 <strong>Tip:</strong> Type your problem in the calculator or search box for accurate AI-powered solutions!</p>
                     </div>
                 `;
                 
             } catch (error) {
                 explanationContent.innerHTML = `
                     <p style="color: #ff6666;">Error analyzing image: ${error.message}</p>
+                    <p style="color: #888888; margin-top: 12px;">Please type your question in the search box or calculator for the best results.</p>
                 `;
             }
         }
@@ -1224,17 +1590,88 @@
 
         function selectSubject(subject) {
             currentSubject = subject;
+            currentTopic = null; // Reset topic when changing subject
+            
             document.querySelectorAll('.subject-chip').forEach(chip => chip.classList.remove('active'));
             event.target.classList.add('active');
+
+            // Show topic section and populate topics
+            const topicSection = document.getElementById('topicSection');
+            topicSection.classList.add('show');
+            populateTopics();
 
             // If in advanced mode, switch to correct advanced button set
             if (currentMode === 'advanced') {
                 Object.values(advancedButtonSets).forEach(id => {
-                    document.getElementById(id).style.display = 'none';
+                    if(document.getElementById(id)) {
+                        document.getElementById(id).style.display = 'none';
+                    }
                 });
                 const advancedId = advancedButtonSets[currentSubject];
-                document.getElementById(advancedId).style.display = 'grid';
+                if(advancedId && document.getElementById(advancedId)) {
+                    document.getElementById(advancedId).style.display = 'grid';
+                }
             }
+        }
+
+        function populateTopics() {
+            const topicGrid = document.getElementById('topicGrid');
+            const topics = subjectTopics[currentSubject] || [];
+            
+            topicGrid.innerHTML = topics.map(topic => 
+                `<div class="topic-item" onclick="selectTopic('${topic}')">${topic}</div>`
+            ).join('');
+
+            document.getElementById('topicSearch').value = '';
+            document.getElementById('selectedTopicBadge').innerHTML = '';
+        }
+
+        function selectTopic(topic) {
+            currentTopic = topic;
+            
+            // Update active state
+            document.querySelectorAll('.topic-item').forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Show selected topic badge
+            document.getElementById('selectedTopicBadge').innerHTML = 
+                `<span class="selected-topic-badge">${topic}</span>`;
+            
+            // Update and show sticky bar
+            document.getElementById('stickySubject').textContent = currentSubject;
+            document.getElementById('stickyTopic').textContent = topic;
+            document.getElementById('stickyTopicBar').classList.add('show');
+        }
+
+        // Handle scroll to show/hide sticky bar
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            if (currentTopic) {
+                const stickyBar = document.getElementById('stickyTopicBar');
+                const topicSection = document.getElementById('topicSection');
+                const topicSectionRect = topicSection.getBoundingClientRect();
+                
+                // Show sticky bar when topic section scrolls past navbar
+                if (topicSectionRect.bottom < 70) {
+                    stickyBar.classList.add('show');
+                } else {
+                    stickyBar.classList.remove('show');
+                }
+            }
+        });
+
+        function filterTopics() {
+            const searchTerm = document.getElementById('topicSearch').value.toLowerCase();
+            const topicItems = document.querySelectorAll('.topic-item');
+            
+            topicItems.forEach(item => {
+                const topicName = item.textContent.toLowerCase();
+                if (topicName.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
 
         function appendCalc(value) {
@@ -1317,6 +1754,8 @@
             showViewExplanationBtn();
 
             try {
+                const topicContext = currentTopic ? `Focus specifically on ${currentTopic} concepts.` : '';
+                
                 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: "POST",
                     headers: { 
@@ -1327,7 +1766,20 @@
                         model: "llama-3.3-70b-versatile",
                         messages: [{
                             role: "user",
-                            content: `You are a ${currentSubject} tutor. Explain this calculation step-by-step with clear reasoning:\n\n${currentExpression}\n\nProvide a detailed, educational explanation.`
+                            content: `You are a ${currentSubject} tutor. ${topicContext}
+
+Explain this calculation step-by-step with clear reasoning:
+
+${currentExpression}
+
+Provide a detailed, educational explanation using this format:
+- Use **bold text** for key concepts and important terms
+- Break down into clear numbered steps
+- Explain the reasoning behind each step
+- Include relevant formulas or principles
+- Make it easy to understand
+
+Format your response with clear headings and structured explanations.`
                         }],
                         temperature: 0.7,
                         max_tokens: 2000
@@ -1341,9 +1793,18 @@
                 }
                 
                 const explanation = data.choices[0].message.content;
+                
+                // Format the explanation with better structure
+                let formattedExplanation = explanation
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+                    .replace(/\n\n/g, '</p><p>') // Paragraphs
+                    .replace(/\n/g, '<br>') // Line breaks
+                    .replace(/(\d+\.)/g, '<br><strong>$1</strong>') // Number lists
+                    .replace(/^- /gm, '• '); // Bullet points
+                
                 explanationContent.innerHTML = `
                     <div class="explanation-content">
-                        ${explanation.replace(/\n/g, '<br>')}
+                        <p>${formattedExplanation}</p>
                     </div>
                 `;
                 

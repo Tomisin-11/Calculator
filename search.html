@@ -165,8 +165,22 @@
             gap: 12px;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+        }
+
+        .section-divider {
+            width: 100%;
+            text-align: center;
+            margin: 20px 0 16px 0;
+        }
+
+        .section-label {
+            color: #666666;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
         .subject-chip {
@@ -190,6 +204,174 @@
             background: #ffffff;
             color: #000000;
             border-color: #ffffff;
+        }
+
+        /* More Subjects Dropdown */
+        .more-subjects-container {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .more-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #888888;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .more-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+        }
+
+        .more-subjects-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            margin-top: 16px;
+        }
+
+        .more-subjects-dropdown.show {
+            max-height: 2000px;
+        }
+
+        .dropdown-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .dropdown-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .dropdown-section .subject-chip {
+            margin: 6px;
+            display: inline-block;
+        }
+
+        /* Topic Search & Dropdown */
+        .topic-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: none;
+            animation: fadeInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .topic-section.show {
+            display: block;
+        }
+
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .topic-search {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .topic-search:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .topic-search::placeholder {
+            color: #555555;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 4px;
+        }
+
+        .topic-grid::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .topic-grid::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .topic-grid::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .topic-item {
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #aaaaaa;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .topic-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .topic-item.active {
+            background: rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+            color: #00ff88;
+            font-weight: 700;
+        }
+
+        .selected-topic-badge {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 12px;
         }
 
         /* Search Area */
@@ -363,8 +545,62 @@
 
         .results-content {
             color: #cccccc;
+            line-height: 2;
+            font-size: 16px;
+        }
+
+        .results-content strong {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        .results-content h1,
+        .results-content h2,
+        .results-content h3 {
+            color: #ffffff;
+            font-weight: 800;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .results-content h1 {
+            font-size: 24px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 8px;
+        }
+
+        .results-content h2 {
+            font-size: 20px;
+        }
+
+        .results-content h3 {
+            font-size: 18px;
+        }
+
+        .results-content ul,
+        .results-content ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .results-content li {
+            margin: 8px 0;
             line-height: 1.8;
-            font-size: 15px;
+        }
+
+        .results-content code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #00ff88;
+            font-weight: 600;
+        }
+
+        .results-content p {
+            margin: 12px 0;
         }
 
         .results-placeholder {
@@ -596,51 +832,272 @@
 
         <!-- Subject Selector -->
         <div class="subject-selector">
+            <div class="section-divider" style="margin-top: 0;">
+                <span class="section-label">Quick Access</span>
+            </div>
+            <div class="subject-chip" onclick="window.location.href='calculator.html'" style="background: rgba(0, 255, 136, 0.15); border: 1px solid rgba(0, 255, 136, 0.3); color: #00ff88;">
+                🧮 Calculator Mode
+            </div>
+            
+            <div class="section-divider">
+                <span class="section-label">Core Subjects</span>
+            </div>
             <div class="subject-chip active" onclick="selectSubject('Mathematics')">Mathematics</div>
             <div class="subject-chip" onclick="selectSubject('Physics')">Physics</div>
             <div class="subject-chip" onclick="selectSubject('Chemistry')">Chemistry</div>
-            <div class="subject-chip" onclick="selectSubject('Statistics')">Statistics</div>
-            <div class="subject-chip" onclick="selectSubject('Engineering')">Engineering</div>
             <div class="subject-chip" onclick="selectSubject('Biology')">Biology</div>
+            <div class="subject-chip" onclick="selectSubject('Statistics')">Statistics</div>
+            <div class="subject-chip" onclick="selectSubject('English')">English</div>
+            <div class="subject-chip" onclick="selectSubject('History')">History</div>
+            <div class="subject-chip" onclick="selectSubject('Geography')">Geography</div>
+            
+            <div class="section-divider">
+                <span class="section-label">Advanced Courses</span>
+            </div>
+            <div class="subject-chip" onclick="selectSubject('Calculus')">Calculus</div>
+            <div class="subject-chip" onclick="selectSubject('Linear Algebra')">Linear Algebra</div>
+            <div class="subject-chip" onclick="selectSubject('Differential Equations')">Differential Equations</div>
+            <div class="subject-chip" onclick="selectSubject('Thermodynamics')">Thermodynamics</div>
+            <div class="subject-chip" onclick="selectSubject('Organic Chemistry')">Organic Chemistry</div>
+            <div class="subject-chip" onclick="selectSubject('Quantum Mechanics')">Quantum Mechanics</div>
+            <div class="subject-chip" onclick="selectSubject('Engineering')">Engineering</div>
+            <div class="subject-chip" onclick="selectSubject('Computer Science')">Computer Science</div>
+            
+            <!-- More Subjects Dropdown -->
+            <div class="more-subjects-container">
+                <button class="more-btn" onclick="toggleMoreSubjects()">
+                    <span id="moreSubjectsText">➕ More Subjects (100+)</span>
+                </button>
+                <div class="more-subjects-dropdown" id="moreSubjectsDropdown">
+                    <div class="dropdown-section">
+                        <div class="dropdown-label">🔬 Natural Sciences</div>
+                        <div class="subject-chip" onclick="selectSubject('Astronomy')">Astronomy</div>
+                        <div class="subject-chip" onclick="selectSubject('Geology')">Geology</div>
+                        <div class="subject-chip" onclick="selectSubject('Environmental Science')">Environmental Science</div>
+                        <div class="subject-chip" onclick="selectSubject('Biochemistry')">Biochemistry</div>
+                        <div class="subject-chip" onclick="selectSubject('Microbiology')">Microbiology</div>
+                        <div class="subject-chip" onclick="selectSubject('Genetics')">Genetics</div>
+                        <div class="subject-chip" onclick="selectSubject('Neuroscience')">Neuroscience</div>
+                        <div class="subject-chip" onclick="selectSubject('Ecology')">Ecology</div>
+                        <div class="subject-chip" onclick="selectSubject('Botany')">Botany</div>
+                        <div class="subject-chip" onclick="selectSubject('Zoology')">Zoology</div>
+                        <div class="subject-chip" onclick="selectSubject('Marine Biology')">Marine Biology</div>
+                        <div class="subject-chip" onclick="selectSubject('Meteorology')">Meteorology</div>
+                        <div class="subject-chip" onclick="selectSubject('Oceanography')">Oceanography</div>
+                        <div class="subject-chip" onclick="selectSubject('Paleontology')">Paleontology</div>
+                        <div class="subject-chip" onclick="selectSubject('Biophysics')">Biophysics</div>
+                    </div>
+                    
+                    <div class="dropdown-section">
+                        <div class="dropdown-label">📐 Mathematics & Logic</div>
+                        <div class="subject-chip" onclick="selectSubject('Discrete Mathematics')">Discrete Mathematics</div>
+                        <div class="subject-chip" onclick="selectSubject('Number Theory')">Number Theory</div>
+                        <div class="subject-chip" onclick="selectSubject('Abstract Algebra')">Abstract Algebra</div>
+                        <div class="subject-chip" onclick="selectSubject('Real Analysis')">Real Analysis</div>
+                        <div class="subject-chip" onclick="selectSubject('Complex Analysis')">Complex Analysis</div>
+                        <div class="subject-chip" onclick="selectSubject('Topology')">Topology</div>
+                        <div class="subject-chip" onclick="selectSubject('Probability Theory')">Probability Theory</div>
+                        <div class="subject-chip" onclick="selectSubject('Combinatorics')">Combinatorics</div>
+                        <div class="subject-chip" onclick="selectSubject('Game Theory')">Game Theory</div>
+                        <div class="subject-chip" onclick="selectSubject('Set Theory')">Set Theory</div>
+                        <div class="subject-chip" onclick="selectSubject('Logic')">Logic</div>
+                        <div class="subject-chip" onclick="selectSubject('Geometry')">Geometry</div>
+                        <div class="subject-chip" onclick="selectSubject('Trigonometry')">Trigonometry</div>
+                        <div class="subject-chip" onclick="selectSubject('Applied Mathematics')">Applied Mathematics</div>
+                    </div>
+                    
+                    <div class="dropdown-section">
+                        <div class="dropdown-label">💻 Computer Science & Technology</div>
+                        <div class="subject-chip" onclick="selectSubject('Data Science')">Data Science</div>
+                        <div class="subject-chip" onclick="selectSubject('Machine Learning')">Machine Learning</div>
+                        <div class="subject-chip" onclick="selectSubject('Artificial Intelligence')">Artificial Intelligence</div>
+                        <div class="subject-chip" onclick="selectSubject('Deep Learning')">Deep Learning</div>
+                        <div class="subject-chip" onclick="selectSubject('Algorithms')">Algorithms</div>
+                        <div class="subject-chip" onclick="selectSubject('Database Systems')">Database Systems</div>
+                        <div class="subject-chip" onclick="selectSubject('Operating Systems')">Operating Systems</div>
+                        <div class="subject-chip" onclick="selectSubject('Computer Networks')">Computer Networks</div>
+                        <div class="subject-chip" onclick="selectSubject('Cybersecurity')">Cybersecurity</div>
+                        <div class="subject-chip" onclick="selectSubject('Cryptography')">Cryptography</div>
+                        <div class="subject-chip" onclick="selectSubject('Cloud Computing')">Cloud Computing</div>
+                        <div class="subject-chip" onclick="selectSubject('Web Development')">Web Development</div>
+                        <div class="subject-chip" onclick="selectSubject('Mobile Development')">Mobile Development</div>
+                        <div class="subject-chip" onclick="selectSubject('Computer Graphics')">Computer Graphics</div>
+                        <div class="subject-chip" onclick="selectSubject('Human-Computer Interaction')">Human-Computer Interaction</div>
+                        <div class="subject-chip" onclick="selectSubject('Information Theory')">Information Theory</div>
+                        <div class="subject-chip" onclick="selectSubject('Blockchain')">Blockchain</div>
+                        <div class="subject-chip" onclick="selectSubject('Internet of Things')">Internet of Things</div>
+                    </div>
+                    
+                    <div class="dropdown-section">
+                        <div class="dropdown-label">⚙️ Engineering</div>
+                        <div class="subject-chip" onclick="selectSubject('Mechanical Engineering')">Mechanical Engineering</div>
+                        <div class="subject-chip" onclick="selectSubject('Electrical Engineering')">Electrical Engineering</div>
+                        <div class="subject-chip" onclick="selectSubject('Civil Engineering')">Civil Engineering</div>
+                        <div class="subject-chip" onclick="selectSubject('Chemical Engineering')">Chemical Engineering</div>
+                        <div class="subject-chip" onclick="selectSubject('Aerospace Engineering')">Aerospace Engineering</div>
+                        <div class="subject-chip" onclick="selectSubject('Software Engineering')">Software Engineering</div>
+                        <div class="subject-chip" onclick="selectSubject('Biomedical Engineering')">Biomedical Engineering</div>
+                        <div class="subject-chip" onclick="selectSubject('Industrial Engineering')">Industrial Engineering</div>
+                        <div class="subject-chip" onclick="selectSubject('Materials Engineering')">Materials Engineering</div>
+                        <div class="subject-chip" onclick="selectSubject('Environmental Engineering')">Environmental Engineering</div>
+                        <div class="subject-chip" onclick="selectSubject('Petroleum Engineering')">Petroleum Engineering</div>
+                        <div class="subject-chip" onclick="selectSubject('Nuclear Engineering')">Nuclear Engineering</div>
+                        <div class="subject-chip" onclick="selectSubject('Electronics')">Electronics</div>
+                        <div class="subject-chip" onclick="selectSubject('Robotics')">Robotics</div>
+                        <div class="subject-chip" onclick="selectSubject('Mechatronics')">Mechatronics</div>
+                        <div class="subject-chip" onclick="selectSubject('Nanotechnology')">Nanotechnology</div>
+                    </div>
+                    
+                    <div class="dropdown-section">
+                        <div class="dropdown-label">👥 Social Sciences</div>
+                        <div class="subject-chip" onclick="selectSubject('Psychology')">Psychology</div>
+                        <div class="subject-chip" onclick="selectSubject('Sociology')">Sociology</div>
+                        <div class="subject-chip" onclick="selectSubject('Economics')">Economics</div>
+                        <div class="subject-chip" onclick="selectSubject('Political Science')">Political Science</div>
+                        <div class="subject-chip" onclick="selectSubject('Anthropology')">Anthropology</div>
+                        <div class="subject-chip" onclick="selectSubject('Philosophy')">Philosophy</div>
+                        <div class="subject-chip" onclick="selectSubject('Criminology')">Criminology</div>
+                        <div class="subject-chip" onclick="selectSubject('Social Work')">Social Work</div>
+                        <div class="subject-chip" onclick="selectSubject('International Relations')">International Relations</div>
+                        <div class="subject-chip" onclick="selectSubject('Public Policy')">Public Policy</div>
+                        <div class="subject-chip" onclick="selectSubject('Urban Planning')">Urban Planning</div>
+                        <div class="subject-chip" onclick="selectSubject('Development Studies')">Development Studies</div>
+                    </div>
+                    
+                    <div class="dropdown-section">
+                        <div class="dropdown-label">🎨 Arts & Humanities</div>
+                        <div class="subject-chip" onclick="selectSubject('Literature')">Literature</div>
+                        <div class="subject-chip" onclick="selectSubject('Art History')">Art History</div>
+                        <div class="subject-chip" onclick="selectSubject('Music Theory')">Music Theory</div>
+                        <div class="subject-chip" onclick="selectSubject('Languages')">Languages</div>
+                        <div class="subject-chip" onclick="selectSubject('Creative Writing')">Creative Writing</div>
+                        <div class="subject-chip" onclick="selectSubject('Film Studies')">Film Studies</div>
+                        <div class="subject-chip" onclick="selectSubject('Theater Arts')">Theater Arts</div>
+                        <div class="subject-chip" onclick="selectSubject('Linguistics')">Linguistics</div>
+                        <div class="subject-chip" onclick="selectSubject('Archaeology')">Archaeology</div>
+                        <div class="subject-chip" onclick="selectSubject('Classical Studies')">Classical Studies</div>
+                        <div class="subject-chip" onclick="selectSubject('Religious Studies')">Religious Studies</div>
+                        <div class="subject-chip" onclick="selectSubject('Cultural Studies')">Cultural Studies</div>
+                        <div class="subject-chip" onclick="selectSubject('Media Studies')">Media Studies</div>
+                        <div class="subject-chip" onclick="selectSubject('Communication')">Communication</div>
+                        <div class="subject-chip" onclick="selectSubject('Journalism')">Journalism</div>
+                    </div>
+                    
+                    <div class="dropdown-section">
+                        <div class="dropdown-label">💼 Business & Economics</div>
+                        <div class="subject-chip" onclick="selectSubject('Business Administration')">Business Administration</div>
+                        <div class="subject-chip" onclick="selectSubject('Accounting')">Accounting</div>
+                        <div class="subject-chip" onclick="selectSubject('Finance')">Finance</div>
+                        <div class="subject-chip" onclick="selectSubject('Marketing')">Marketing</div>
+                        <div class="subject-chip" onclick="selectSubject('Management')">Management</div>
+                        <div class="subject-chip" onclick="selectSubject('Entrepreneurship')">Entrepreneurship</div>
+                        <div class="subject-chip" onclick="selectSubject('Human Resources')">Human Resources</div>
+                        <div class="subject-chip" onclick="selectSubject('Business Analytics')">Business Analytics</div>
+                        <div class="subject-chip" onclick="selectSubject('Supply Chain Management')">Supply Chain Management</div>
+                        <div class="subject-chip" onclick="selectSubject('Operations Management')">Operations Management</div>
+                        <div class="subject-chip" onclick="selectSubject('International Business')">International Business</div>
+                        <div class="subject-chip" onclick="selectSubject('Real Estate')">Real Estate</div>
+                        <div class="subject-chip" onclick="selectSubject('Insurance')">Insurance</div>
+                        <div class="subject-chip" onclick="selectSubject('Banking')">Banking</div>
+                        <div class="subject-chip" onclick="selectSubject('Investment')">Investment</div>
+                    </div>
+                    
+                    <div class="dropdown-section">
+                        <div class="dropdown-label">⚖️ Law & Legal Studies</div>
+                        <div class="subject-chip" onclick="selectSubject('Constitutional Law')">Constitutional Law</div>
+                        <div class="subject-chip" onclick="selectSubject('Criminal Law')">Criminal Law</div>
+                        <div class="subject-chip" onclick="selectSubject('Civil Law')">Civil Law</div>
+                        <div class="subject-chip" onclick="selectSubject('Contract Law')">Contract Law</div>
+                        <div class="subject-chip" onclick="selectSubject('Corporate Law')">Corporate Law</div>
+                        <div class="subject-chip" onclick="selectSubject('International Law')">International Law</div>
+                        <div class="subject-chip" onclick="selectSubject('Environmental Law')">Environmental Law</div>
+                        <div class="subject-chip" onclick="selectSubject('Intellectual Property')">Intellectual Property</div>
+                        <div class="subject-chip" onclick="selectSubject('Tax Law')">Tax Law</div>
+                        <div class="subject-chip" onclick="selectSubject('Family Law')">Family Law</div>
+                    </div>
+                    
+                    <div class="dropdown-section">
+                        <div class="dropdown-label">🏥 Health & Medicine</div>
+                        <div class="subject-chip" onclick="selectSubject('Anatomy')">Anatomy</div>
+                        <div class="subject-chip" onclick="selectSubject('Physiology')">Physiology</div>
+                        <div class="subject-chip" onclick="selectSubject('Pharmacology')">Pharmacology</div>
+                        <div class="subject-chip" onclick="selectSubject('Medicine')">Medicine</div>
+                        <div class="subject-chip" onclick="selectSubject('Nursing')">Nursing</div>
+                        <div class="subject-chip" onclick="selectSubject('Public Health')">Public Health</div>
+                        <div class="subject-chip" onclick="selectSubject('Epidemiology')">Epidemiology</div>
+                        <div class="subject-chip" onclick="selectSubject('Pathology')">Pathology</div>
+                        <div class="subject-chip" onclick="selectSubject('Radiology')">Radiology</div>
+                        <div class="subject-chip" onclick="selectSubject('Dentistry')">Dentistry</div>
+                        <div class="subject-chip" onclick="selectSubject('Veterinary Medicine')">Veterinary Medicine</div>
+                        <div class="subject-chip" onclick="selectSubject('Nutrition')">Nutrition</div>
+                        <div class="subject-chip" onclick="selectSubject('Kinesiology')">Kinesiology</div>
+                        <div class="subject-chip" onclick="selectSubject('Physical Therapy')">Physical Therapy</div>
+                        <div class="subject-chip" onclick="selectSubject('Occupational Therapy')">Occupational Therapy</div>
+                    </div>
+                    
+                    <div class="dropdown-section">
+                        <div class="dropdown-label">🎓 Education & Teaching</div>
+                        <div class="subject-chip" onclick="selectSubject('Education Theory')">Education Theory</div>
+                        <div class="subject-chip" onclick="selectSubject('Curriculum Design')">Curriculum Design</div>
+                        <div class="subject-chip" onclick="selectSubject('Educational Psychology')">Educational Psychology</div>
+                        <div class="subject-chip" onclick="selectSubject('Special Education')">Special Education</div>
+                        <div class="subject-chip" onclick="selectSubject('TESOL')">TESOL</div>
+                        <div class="subject-chip" onclick="selectSubject('Early Childhood Education')">Early Childhood Education</div>
+                    </div>
+                    
+                    <div class="dropdown-section">
+                        <div class="dropdown-label">🌾 Agriculture & Environmental</div>
+                        <div class="subject-chip" onclick="selectSubject('Agriculture')">Agriculture</div>
+                        <div class="subject-chip" onclick="selectSubject('Agronomy')">Agronomy</div>
+                        <div class="subject-chip" onclick="selectSubject('Horticulture')">Horticulture</div>
+                        <div class="subject-chip" onclick="selectSubject('Animal Science')">Animal Science</div>
+                        <div class="subject-chip" onclick="selectSubject('Forestry')">Forestry</div>
+                        <div class="subject-chip" onclick="selectSubject('Soil Science')">Soil Science</div>
+                        <div class="subject-chip" onclick="selectSubject('Wildlife Management')">Wildlife Management</div>
+                    </div>
+                    
+                    <div class="dropdown-section">
+                        <div class="dropdown-label">🏗️ Architecture & Design</div>
+                        <div class="subject-chip" onclick="selectSubject('Architecture')">Architecture</div>
+                        <div class="subject-chip" onclick="selectSubject('Interior Design')">Interior Design</div>
+                        <div class="subject-chip" onclick="selectSubject('Graphic Design')">Graphic Design</div>
+                        <div class="subject-chip" onclick="selectSubject('Industrial Design')">Industrial Design</div>
+                        <div class="subject-chip" onclick="selectSubject('Fashion Design')">Fashion Design</div>
+                        <div class="subject-chip" onclick="selectSubject('Urban Design')">Urban Design</div>
+                        <div class="subject-chip" onclick="selectSubject('Landscape Architecture')">Landscape Architecture</div>
+                    </div>
+                    
+                    <div class="dropdown-section">
+                        <div class="dropdown-label">🎯 Specialized & Emerging Fields</div>
+                        <div class="subject-chip" onclick="selectSubject('Actuarial Science')">Actuarial Science</div>
+                        <div class="subject-chip" onclick="selectSubject('Sports Science')">Sports Science</div>
+                        <div class="subject-chip" onclick="selectSubject('Military Science')">Military Science</div>
+                        <div class="subject-chip" onclick="selectSubject('Aviation')">Aviation</div>
+                        <div class="subject-chip" onclick="selectSubject('Hospitality Management')">Hospitality Management</div>
+                        <div class="subject-chip" onclick="selectSubject('Library Science')">Library Science</div>
+                        <div class="subject-chip" onclick="selectSubject('Forensic Science')">Forensic Science</div>
+                        <div class="subject-chip" onclick="selectSubject('Fire Science')">Fire Science</div>
+                        <div class="subject-chip" onclick="selectSubject('Emergency Management')">Emergency Management</div>
+                        <div class="subject-chip" onclick="selectSubject('Cosmetology')">Cosmetology</div>
+                        <div class="subject-chip" onclick="selectSubject('Culinary Arts')">Culinary Arts</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Quick Examples -->
-        <div class="quick-examples">
-            <div class="example-card" onclick="useExample('Solve: x² - 5x + 6 = 0')">
-                <div class="example-title">Algebra</div>
-                <div class="example-text">Solve quadratic equations</div>
+        <!-- Topic Selection Section -->
+        <div class="topic-section" id="topicSection">
+            <div class="topic-header">
+                <input type="text" id="topicSearch" class="topic-search" placeholder="Search topics..." onkeyup="filterTopics()">
+                <span id="selectedTopicBadge"></span>
             </div>
-            <div class="example-card" onclick="useExample('A ball is thrown upward at 20 m/s. Find max height (g = 9.8 m/s²)')">
-                <div class="example-title">Physics</div>
-                <div class="example-text">Kinematics problems</div>
-            </div>
-            <div class="example-card" onclick="useExample('Balance: Fe + O₂ → Fe₂O₃')">
-                <div class="example-title">Chemistry</div>
-                <div class="example-text">Balance chemical equations</div>
-            </div>
-            <div class="example-card" onclick="useExample('Calculate the derivative of f(x) = x³ + 2x² - 5x + 3')">
-                <div class="example-title">Calculus</div>
-                <div class="example-text">Find derivatives</div>
+            <div class="topic-grid" id="topicGrid">
+                <!-- Topics will be populated by JavaScript -->
             </div>
         </div>
 
         <!-- Search Area -->
-        <div class="search-area">
-            <!-- Image Upload Section -->
-            <div class="image-upload-section">
-                <div class="upload-buttons">
-                    <label class="upload-btn">
-                        📁 Upload Image
-                        <input type="file" id="imageUpload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
-                    </label>
-                    <button class="upload-btn" onclick="openCamera()">📷 Take Photo</button>
-                </div>
-                <div class="image-preview" id="imagePreview">
-                    <img id="previewImg" src="" alt="Preview">
-                    <button class="remove-image" onclick="removeImage()">×</button>
-                </div>
-            </div>
-
+        <div class="search-area" id="searchArea">
             <textarea 
                 id="searchInput" 
                 class="search-input" 
@@ -674,7 +1131,7 @@ Press Ctrl+Enter to search"></textarea>
         <div class="results-area" id="resultsArea">
             <div class="results-title">AI Answer</div>
             <div id="resultsContent" class="results-placeholder">
-                Enter your question above or upload/take a photo to see the AI-powered response
+                Enter your question above to see the AI-powered response
             </div>
         </div>
     </div>
@@ -689,7 +1146,263 @@ Press Ctrl+Enter to search"></textarea>
     <script>
         const apiKey = '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';
         let currentSubject = 'Mathematics';
-        let uploadedImage = null;
+        let currentTopic = null;
+
+        // Comprehensive topics for each subject
+        const subjectTopics = {
+            'Mathematics': [
+                'Algebra', 'Geometry', 'Trigonometry', 'Pre-Calculus', 'Number Theory',
+                'Arithmetic', 'Fractions & Decimals', 'Percentages', 'Ratios & Proportions',
+                'Exponents & Radicals', 'Polynomials', 'Quadratic Equations', 'Systems of Equations',
+                'Inequalities', 'Functions', 'Graphing', 'Sequences & Series', 'Probability',
+                'Combinatorics', 'Logarithms', 'Complex Numbers', 'Matrices'
+            ],
+            'Calculus': [
+                'Limits', 'Derivatives', 'Integration', 'Differential Calculus', 'Integral Calculus',
+                'Multivariable Calculus', 'Vector Calculus', 'Applications of Derivatives',
+                'Chain Rule', 'Product Rule', 'Quotient Rule', 'Implicit Differentiation',
+                'Related Rates', 'Optimization', 'Curve Sketching', 'Area Under Curves',
+                'Volume of Solids', 'Arc Length', 'Surface Area', 'Partial Derivatives',
+                'Multiple Integrals', 'Line Integrals', 'Green\'s Theorem', 'Stokes\' Theorem'
+            ],
+            'Physics': [
+                'Mechanics', 'Kinematics', 'Dynamics', 'Energy & Work', 'Momentum',
+                'Rotational Motion', 'Gravity', 'Oscillations', 'Waves', 'Sound',
+                'Light & Optics', 'Electricity', 'Magnetism', 'Electromagnetism',
+                'Circuits', 'Thermodynamics', 'Fluid Mechanics', 'Modern Physics',
+                'Relativity', 'Atomic Physics', 'Nuclear Physics', 'Quantum Physics'
+            ],
+            'Chemistry': [
+                'Atomic Structure', 'Periodic Table', 'Chemical Bonding', 'Stoichiometry',
+                'Chemical Reactions', 'Acids & Bases', 'Redox Reactions', 'Thermochemistry',
+                'Kinetics', 'Equilibrium', 'Solutions', 'Electrochemistry', 'Nuclear Chemistry',
+                'Organic Compounds', 'Inorganic Compounds', 'Gas Laws', 'Molecular Geometry'
+            ],
+            'Organic Chemistry': [
+                'Alkanes', 'Alkenes', 'Alkynes', 'Aromatic Compounds', 'Alcohols', 'Ethers',
+                'Aldehydes', 'Ketones', 'Carboxylic Acids', 'Esters', 'Amines', 'Amides',
+                'Polymers', 'Stereochemistry', 'Reaction Mechanisms', 'Substitution Reactions',
+                'Elimination Reactions', 'Addition Reactions', 'Oxidation-Reduction',
+                'Spectroscopy', 'NMR', 'IR Spectroscopy', 'Mass Spectrometry'
+            ],
+            'Biology': [
+                'Cell Biology', 'Genetics', 'Evolution', 'Ecology', 'Anatomy', 'Physiology',
+                'Molecular Biology', 'Biochemistry', 'Microbiology', 'Botany', 'Zoology',
+                'Immunology', 'Neuroscience', 'Developmental Biology', 'DNA & RNA',
+                'Protein Synthesis', 'Cellular Respiration', 'Photosynthesis', 'Mitosis & Meiosis'
+            ],
+            'Statistics': [
+                'Descriptive Statistics', 'Probability Theory', 'Distributions', 'Normal Distribution',
+                'Binomial Distribution', 'Poisson Distribution', 'Hypothesis Testing', 'Confidence Intervals',
+                'Regression Analysis', 'Correlation', 'ANOVA', 'Chi-Square Tests', 't-Tests',
+                'Sampling Methods', 'Central Limit Theorem', 'Standard Deviation', 'Variance',
+                'Mean, Median, Mode', 'Percentiles & Quartiles', 'Z-Scores', 'P-Values'
+            ],
+            'Linear Algebra': [
+                'Vectors', 'Matrices', 'Matrix Operations', 'Determinants', 'Eigenvalues & Eigenvectors',
+                'Linear Transformations', 'Vector Spaces', 'Basis & Dimension', 'Inner Product Spaces',
+                'Orthogonality', 'Diagonalization', 'Systems of Linear Equations', 'Gaussian Elimination',
+                'LU Decomposition', 'QR Decomposition', 'Singular Value Decomposition'
+            ],
+            'Differential Equations': [
+                'First Order ODEs', 'Second Order ODEs', 'Higher Order ODEs', 'Linear Equations',
+                'Nonlinear Equations', 'Separable Equations', 'Exact Equations', 'Integrating Factors',
+                'Homogeneous Equations', 'Bernoulli Equations', 'Laplace Transforms',
+                'Systems of ODEs', 'Partial Differential Equations', 'Boundary Value Problems',
+                'Initial Value Problems', 'Series Solutions', 'Numerical Methods'
+            ],
+            'Thermodynamics': [
+                'Laws of Thermodynamics', 'Heat Transfer', 'Enthalpy', 'Entropy', 'Gibbs Free Energy',
+                'Work & Energy', 'Heat Engines', 'Refrigeration Cycles', 'Phase Transitions',
+                'Ideal Gas Law', 'Real Gases', 'Thermodynamic Processes', 'Carnot Cycle',
+                'Otto Cycle', 'Diesel Cycle', 'Statistical Mechanics'
+            ],
+            'Quantum Mechanics': [
+                'Wave-Particle Duality', 'Schrödinger Equation', 'Wave Functions', 'Operators',
+                'Quantum States', 'Uncertainty Principle', 'Quantum Tunneling', 'Harmonic Oscillator',
+                'Hydrogen Atom', 'Angular Momentum', 'Spin', 'Quantum Entanglement',
+                'Perturbation Theory', 'Time-Dependent Systems', 'Quantum Field Theory'
+            ],
+            'Engineering': [
+                'Statics', 'Dynamics', 'Strength of Materials', 'Fluid Mechanics', 'Heat Transfer',
+                'Control Systems', 'Signal Processing', 'Circuit Analysis', 'Digital Logic',
+                'Mechanical Design', 'Structural Analysis', 'Materials Science', 'CAD/CAM',
+                'Thermodynamics', 'Electromagnetics', 'Power Systems'
+            ],
+            'Computer Science': [
+                'Algorithms', 'Data Structures', 'Programming', 'Object-Oriented Programming',
+                'Databases', 'Operating Systems', 'Computer Networks', 'Artificial Intelligence',
+                'Machine Learning', 'Computer Architecture', 'Software Engineering',
+                'Complexity Theory', 'Automata Theory', 'Compilers', 'Cybersecurity',
+                'Distributed Systems', 'Cloud Computing', 'Big O Notation', 'Sorting Algorithms',
+                'Graph Theory', 'Trees', 'Hash Tables', 'Recursion'
+            ],
+            'English': ['Grammar', 'Composition', 'Literature Analysis', 'Poetry', 'Essays', 'Creative Writing', 'Research Papers', 'Citation Styles', 'Rhetoric', 'Reading Comprehension', 'Vocabulary', 'Shakespeare', 'American Literature', 'British Literature', 'World Literature'],
+            'History': ['Ancient History', 'Medieval History', 'Modern History', 'World War I', 'World War II', 'American History', 'European History', 'Asian History', 'African History', 'Industrial Revolution', 'Renaissance', 'Cold War', 'Colonial Era', 'Civil Rights Movement'],
+            'Geography': ['Physical Geography', 'Human Geography', 'Cartography', 'Climate', 'Weather Patterns', 'Geology', 'Landforms', 'Oceans', 'Rivers', 'Population Geography', 'Urban Geography', 'Economic Geography', 'Cultural Geography', 'Political Geography'],
+            'Astronomy': ['Solar System', 'Planets', 'Stars', 'Galaxies', 'Cosmology', 'Black Holes', 'Nebulae', 'Constellations', 'Telescopes', 'Astrophysics', 'Space Exploration', 'Exoplanets'],
+            'Geology': ['Rock Types', 'Minerals', 'Plate Tectonics', 'Earthquakes', 'Volcanoes', 'Weathering & Erosion', 'Fossils', 'Geologic Time', 'Stratigraphy', 'Petrology', 'Mineralogy'],
+            'Environmental Science': ['Ecosystems', 'Biodiversity', 'Climate Change', 'Pollution', 'Conservation', 'Renewable Energy', 'Sustainability', 'Water Resources', 'Soil Science', 'Environmental Policy'],
+            'Biochemistry': ['Amino Acids', 'Proteins', 'Enzymes', 'Carbohydrates', 'Lipids', 'Nucleic Acids', 'Metabolism', 'Glycolysis', 'Citric Acid Cycle', 'Electron Transport Chain', 'Protein Synthesis'],
+            'Microbiology': ['Bacteria', 'Viruses', 'Fungi', 'Protozoa', 'Microbial Growth', 'Sterilization', 'Antibiotics', 'Immunology', 'Pathogenesis'],
+            'Genetics': ['DNA Structure', 'Gene Expression', 'Mendelian Genetics', 'Mutations', 'Genetic Engineering', 'CRISPR', 'Heredity', 'Chromosomes', 'Alleles'],
+            'Neuroscience': ['Neurons', 'Action Potentials', 'Synapses', 'Brain Structure', 'Neurotransmitters', 'Sensory Systems', 'Motor Systems', 'Memory', 'Learning', 'Consciousness'],
+            'Ecology': ['Food Chains', 'Food Webs', 'Energy Flow', 'Nutrient Cycles', 'Population Ecology', 'Community Ecology', 'Biomes', 'Succession'],
+            'Botany': ['Plant Anatomy', 'Photosynthesis', 'Plant Reproduction', 'Plant Hormones', 'Plant Classification', 'Flowering Plants', 'Trees', 'Plant Physiology'],
+            'Zoology': ['Animal Classification', 'Vertebrates', 'Invertebrates', 'Animal Behavior', 'Evolution', 'Animal Physiology', 'Comparative Anatomy'],
+            'Discrete Mathematics': ['Set Theory', 'Logic', 'Combinatorics', 'Graph Theory', 'Relations', 'Functions', 'Proof Techniques', 'Number Theory', 'Algorithms'],
+            'Number Theory': ['Prime Numbers', 'Divisibility', 'Modular Arithmetic', 'Diophantine Equations', 'Cryptography', 'Congruences', 'Greatest Common Divisor'],
+            'Abstract Algebra': ['Groups', 'Rings', 'Fields', 'Homomorphisms', 'Isomorphisms', 'Vector Spaces', 'Modules', 'Group Theory'],
+            'Real Analysis': ['Limits', 'Continuity', 'Sequences', 'Series', 'Convergence', 'Differentiation', 'Integration', 'Riemann Integration'],
+            'Complex Analysis': ['Complex Numbers', 'Analytic Functions', 'Cauchy Theorem', 'Residue Theory', 'Conformal Mapping', 'Complex Integration'],
+            'Topology': ['Topological Spaces', 'Continuity', 'Compactness', 'Connectedness', 'Metric Spaces', 'Homeomorphisms'],
+            'Data Science': ['Data Analysis', 'Data Visualization', 'Statistical Methods', 'Python', 'R Programming', 'Pandas', 'NumPy', 'Machine Learning', 'Big Data', 'Data Mining'],
+            'Machine Learning': ['Supervised Learning', 'Unsupervised Learning', 'Neural Networks', 'Deep Learning', 'Classification', 'Regression', 'Clustering', 'Decision Trees', 'Random Forests', 'Support Vector Machines'],
+            'Artificial Intelligence': ['Search Algorithms', 'Knowledge Representation', 'Expert Systems', 'Natural Language Processing', 'Computer Vision', 'Robotics', 'AI Ethics', 'Machine Learning'],
+            'Algorithms': ['Sorting Algorithms', 'Searching Algorithms', 'Graph Algorithms', 'Dynamic Programming', 'Greedy Algorithms', 'Divide and Conquer', 'Time Complexity', 'Space Complexity'],
+            'Database Systems': ['SQL', 'Relational Databases', 'Normalization', 'ER Diagrams', 'Transactions', 'Indexing', 'NoSQL', 'MongoDB', 'Database Design'],
+            'Operating Systems': ['Processes', 'Threads', 'Memory Management', 'File Systems', 'CPU Scheduling', 'Deadlocks', 'Virtual Memory', 'Unix/Linux'],
+            'Mechanical Engineering': ['Statics', 'Dynamics', 'Thermodynamics', 'Fluid Mechanics', 'Machine Design', 'Manufacturing', 'Materials Science', 'CAD/CAM'],
+            'Electrical Engineering': ['Circuit Analysis', 'Electronics', 'Signals & Systems', 'Control Systems', 'Power Systems', 'Electromagnetics', 'Digital Logic', 'Microprocessors'],
+            'Civil Engineering': ['Structural Engineering', 'Geotechnical Engineering', 'Transportation', 'Water Resources', 'Construction Management', 'Concrete Design', 'Steel Design', 'Surveying'],
+            'Chemical Engineering': ['Process Design', 'Unit Operations', 'Thermodynamics', 'Reaction Engineering', 'Transport Phenomena', 'Process Control', 'Safety Engineering'],
+            'Aerospace Engineering': ['Aerodynamics', 'Flight Mechanics', 'Propulsion', 'Aircraft Design', 'Spacecraft Design', 'Orbital Mechanics', 'Structures'],
+            'Software Engineering': ['Software Development', 'Agile', 'Testing', 'Version Control', 'Design Patterns', 'Requirements Engineering', 'Project Management'],
+            'Electronics': ['Analog Electronics', 'Digital Electronics', 'Semiconductors', 'Amplifiers', 'Oscillators', 'Filters', 'Power Electronics', 'PCB Design'],
+            'Robotics': ['Kinematics', 'Dynamics', 'Control Systems', 'Sensors', 'Actuators', 'Path Planning', 'Computer Vision', 'AI in Robotics'],
+            'Psychology': ['Cognitive Psychology', 'Developmental Psychology', 'Social Psychology', 'Abnormal Psychology', 'Clinical Psychology', 'Neuroscience', 'Behavioral Psychology', 'Personality Theories'],
+            'Sociology': ['Social Structure', 'Culture', 'Socialization', 'Deviance', 'Social Stratification', 'Race & Ethnicity', 'Gender', 'Organizations'],
+            'Economics': ['Microeconomics', 'Macroeconomics', 'Supply & Demand', 'Elasticity', 'Market Structures', 'GDP', 'Inflation', 'Unemployment', 'Monetary Policy', 'Fiscal Policy', 'International Trade'],
+            'Political Science': ['Political Theory', 'Comparative Politics', 'International Relations', 'Public Policy', 'Political Systems', 'Democracy', 'Government'],
+            'Anthropology': ['Cultural Anthropology', 'Physical Anthropology', 'Archaeology', 'Linguistic Anthropology', 'Human Evolution', 'Ethnography'],
+            'Philosophy': ['Ethics', 'Metaphysics', 'Epistemology', 'Logic', 'Political Philosophy', 'Philosophy of Mind', 'Philosophy of Science', 'Existentialism'],
+            'Literature': ['Literary Analysis', 'Poetry', 'Drama', 'Fiction', 'Non-Fiction', 'Literary Devices', 'Themes', 'Symbolism', 'Character Analysis'],
+            'Art History': ['Renaissance Art', 'Modern Art', 'Contemporary Art', 'Impressionism', 'Cubism', 'Surrealism', 'Classical Art', 'Medieval Art'],
+            'Music Theory': ['Scales', 'Chords', 'Harmony', 'Melody', 'Rhythm', 'Notation', 'Intervals', 'Key Signatures', 'Composition'],
+            'Languages': ['Grammar', 'Vocabulary', 'Pronunciation', 'Reading', 'Writing', 'Speaking', 'Listening', 'Translation', 'Linguistics'],
+            'Creative Writing': ['Fiction Writing', 'Poetry', 'Screenwriting', 'Character Development', 'Plot Structure', 'Dialogue', 'Setting', 'Point of View'],
+            'Business': ['Business Strategy', 'Marketing', 'Finance', 'Operations Management', 'Human Resources', 'Entrepreneurship', 'Business Ethics', 'Leadership'],
+            'Accounting': ['Financial Accounting', 'Managerial Accounting', 'Cost Accounting', 'Auditing', 'Tax Accounting', 'Balance Sheets', 'Income Statements', 'Cash Flow', 'Depreciation'],
+            'Finance': ['Corporate Finance', 'Investment Analysis', 'Financial Markets', 'Portfolio Management', 'Risk Management', 'Valuation', 'Time Value of Money'],
+            'Marketing': ['Market Research', 'Consumer Behavior', 'Branding', 'Advertising', 'Digital Marketing', 'Social Media Marketing', 'Content Marketing', 'SEO'],
+            'Law': ['Constitutional Law', 'Criminal Law', 'Civil Law', 'Contract Law', 'Tort Law', 'Property Law', 'Legal Writing', 'Legal Research'],
+            'Management': ['Strategic Management', 'Project Management', 'Leadership', 'Organizational Behavior', 'Change Management', 'Quality Management'],
+            'Anatomy': ['Skeletal System', 'Muscular System', 'Nervous System', 'Circulatory System', 'Respiratory System', 'Digestive System', 'Endocrine System'],
+            'Physiology': ['Cell Physiology', 'Organ Systems', 'Homeostasis', 'Metabolism', 'Hormones', 'Cardiovascular Physiology', 'Respiratory Physiology'],
+            'Pharmacology': ['Drug Mechanisms', 'Pharmacokinetics', 'Pharmacodynamics', 'Drug Classes', 'Drug Interactions', 'Toxicology', 'Clinical Pharmacology'],
+            'Medicine': ['Internal Medicine', 'Surgery', 'Pediatrics', 'Cardiology', 'Neurology', 'Oncology', 'Infectious Diseases', 'Diagnosis', 'Treatment'],
+            'Nursing': ['Patient Care', 'Clinical Skills', 'Medical-Surgical Nursing', 'Pediatric Nursing', 'Critical Care', 'Pharmacology', 'Nursing Assessment'],
+            'Public Health': ['Epidemiology', 'Health Policy', 'Environmental Health', 'Global Health', 'Disease Prevention', 'Health Promotion', 'Biostatistics'],
+            'Marine Biology': ['Marine Ecosystems', 'Coral Reefs', 'Marine Mammals', 'Fish Biology', 'Marine Conservation', 'Deep Sea Life'],
+            'Meteorology': ['Weather Patterns', 'Climate Systems', 'Atmospheric Science', 'Forecasting', 'Storms', 'Cloud Formation'],
+            'Oceanography': ['Ocean Currents', 'Marine Geology', 'Ocean Chemistry', 'Marine Life', 'Tides', 'Ocean Zones'],
+            'Paleontology': ['Fossils', 'Dinosaurs', 'Evolution', 'Extinction Events', 'Fossil Dating', 'Prehistoric Life'],
+            'Biophysics': ['Molecular Biophysics', 'Cell Mechanics', 'Biomechanics', 'Protein Structure', 'Membrane Biophysics'],
+            'Probability Theory': ['Random Variables', 'Probability Distributions', 'Expected Value', 'Variance', 'Law of Large Numbers'],
+            'Combinatorics': ['Permutations', 'Combinations', 'Binomial Theorem', 'Graph Theory', 'Counting Principles'],
+            'Game Theory': ['Nash Equilibrium', 'Strategic Games', 'Zero-Sum Games', 'Cooperative Games', 'Decision Theory'],
+            'Set Theory': ['Sets', 'Set Operations', 'Cardinality', 'Relations', 'Functions', 'Venn Diagrams'],
+            'Geometry': ['Euclidean Geometry', 'Coordinate Geometry', 'Solid Geometry', 'Transformations', 'Proofs', 'Angles', 'Triangles'],
+            'Trigonometry': ['Sine Cosine Tangent', 'Unit Circle', 'Trigonometric Identities', 'Law of Sines', 'Law of Cosines', 'Graphing Trig Functions'],
+            'Applied Mathematics': ['Mathematical Modeling', 'Optimization', 'Numerical Methods', 'Operations Research', 'Simulation'],
+            'Deep Learning': ['Neural Networks', 'CNNs', 'RNNs', 'Transformers', 'GANs', 'Backpropagation', 'Transfer Learning'],
+            'Computer Networks': ['TCP/IP', 'Routing', 'Network Security', 'Protocols', 'OSI Model', 'LAN WAN', 'DNS'],
+            'Cybersecurity': ['Encryption', 'Network Security', 'Ethical Hacking', 'Firewalls', 'Malware', 'Security Protocols', 'Penetration Testing'],
+            'Cryptography': ['Encryption Algorithms', 'Public Key Cryptography', 'Hash Functions', 'Digital Signatures', 'RSA', 'AES'],
+            'Cloud Computing': ['AWS', 'Azure', 'Cloud Architecture', 'Virtualization', 'Containers', 'Microservices', 'Serverless'],
+            'Web Development': ['HTML CSS JavaScript', 'React', 'Node.js', 'REST APIs', 'Databases', 'Responsive Design', 'Frontend Backend'],
+            'Mobile Development': ['iOS Development', 'Android Development', 'React Native', 'Flutter', 'Mobile UI UX', 'App Deployment'],
+            'Computer Graphics': ['3D Modeling', 'Rendering', 'Animation', 'Shaders', 'Ray Tracing', 'OpenGL', 'WebGL'],
+            'Human-Computer Interaction': ['UI Design', 'UX Design', 'Usability', 'Accessibility', 'User Research', 'Prototyping'],
+            'Information Theory': ['Entropy', 'Data Compression', 'Error Correction', 'Channel Capacity', 'Coding Theory'],
+            'Blockchain': ['Cryptocurrency', 'Smart Contracts', 'Distributed Ledger', 'Bitcoin', 'Ethereum', 'Consensus Algorithms'],
+            'Internet of Things': ['IoT Devices', 'Sensors', 'IoT Protocols', 'Edge Computing', 'IoT Security', 'Smart Home'],
+            'Biomedical Engineering': ['Medical Devices', 'Biomaterials', 'Tissue Engineering', 'Medical Imaging', 'Prosthetics'],
+            'Industrial Engineering': ['Production Systems', 'Quality Control', 'Supply Chain', 'Ergonomics', 'Lean Manufacturing'],
+            'Materials Engineering': ['Material Properties', 'Metals', 'Polymers', 'Ceramics', 'Composites', 'Nanomaterials'],
+            'Environmental Engineering': ['Water Treatment', 'Air Quality', 'Waste Management', 'Sustainability', 'Green Engineering'],
+            'Petroleum Engineering': ['Drilling', 'Reservoir Engineering', 'Production', 'Refining', 'Oil & Gas'],
+            'Nuclear Engineering': ['Nuclear Reactors', 'Radiation', 'Nuclear Safety', 'Radioactive Waste', 'Fusion'],
+            'Mechatronics': ['Robotics', 'Control Systems', 'Sensors Actuators', 'Automation', 'Embedded Systems'],
+            'Nanotechnology': ['Nanomaterials', 'Nanoelectronics', 'Nanomedicine', 'Quantum Dots', 'Carbon Nanotubes'],
+            'Criminology': ['Crime Theory', 'Criminal Justice', 'Forensics', 'Law Enforcement', 'Corrections'],
+            'Social Work': ['Case Management', 'Counseling', 'Community Development', 'Child Welfare', 'Mental Health'],
+            'International Relations': ['Diplomacy', 'Foreign Policy', 'Global Politics', 'International Organizations', 'Conflict Resolution'],
+            'Public Policy': ['Policy Analysis', 'Public Administration', 'Legislation', 'Government Programs', 'Policy Making'],
+            'Urban Planning': ['City Planning', 'Zoning', 'Transportation Planning', 'Sustainable Cities', 'Community Development'],
+            'Development Studies': ['Economic Development', 'International Development', 'Poverty', 'Sustainability', 'Global Issues'],
+            'Film Studies': ['Film Theory', 'Cinematography', 'Film History', 'Screenwriting', 'Film Analysis', 'Directing'],
+            'Theater Arts': ['Acting', 'Directing', 'Stagecraft', 'Theater History', 'Playwriting', 'Production'],
+            'Linguistics': ['Phonetics', 'Syntax', 'Semantics', 'Morphology', 'Language Acquisition', 'Sociolinguistics'],
+            'Archaeology': ['Excavation', 'Artifacts', 'Dating Methods', 'Ancient Civilizations', 'Archaeological Theory'],
+            'Classical Studies': ['Ancient Greece', 'Ancient Rome', 'Latin', 'Greek', 'Classical Literature', 'Ancient History'],
+            'Religious Studies': ['World Religions', 'Theology', 'Religious Philosophy', 'Sacred Texts', 'Comparative Religion'],
+            'Cultural Studies': ['Popular Culture', 'Media Analysis', 'Identity', 'Globalization', 'Cultural Theory'],
+            'Media Studies': ['Mass Media', 'Digital Media', 'Media Effects', 'Communication Theory', 'Broadcasting'],
+            'Communication': ['Interpersonal Communication', 'Public Speaking', 'Rhetoric', 'Nonverbal Communication', 'Mass Communication'],
+            'Journalism': ['News Writing', 'Investigative Journalism', 'Broadcast Journalism', 'Photojournalism', 'Ethics'],
+            'Business Administration': ['Business Strategy', 'Organizational Behavior', 'Business Law', 'Corporate Governance'],
+            'Entrepreneurship': ['Startups', 'Business Plans', 'Innovation', 'Venture Capital', 'Business Models'],
+            'Human Resources': ['Recruitment', 'Training', 'Performance Management', 'Labor Relations', 'Compensation'],
+            'Business Analytics': ['Data Analytics', 'Business Intelligence', 'Predictive Analytics', 'Data Visualization'],
+            'Supply Chain Management': ['Logistics', 'Procurement', 'Inventory Management', 'Distribution', 'Operations'],
+            'Operations Management': ['Production Planning', 'Process Improvement', 'Quality Management', 'Project Management'],
+            'International Business': ['Global Trade', 'Multinational Corporations', 'Cross-Cultural Management', 'Global Strategy'],
+            'Real Estate': ['Property Management', 'Real Estate Finance', 'Property Law', 'Appraisal', 'Investment'],
+            'Insurance': ['Risk Management', 'Underwriting', 'Claims', 'Insurance Types', 'Actuarial Science'],
+            'Banking': ['Commercial Banking', 'Investment Banking', 'Financial Services', 'Banking Regulations'],
+            'Investment': ['Portfolio Management', 'Securities', 'Asset Allocation', 'Investment Analysis', 'Trading'],
+            'Constitutional Law': ['Constitutional Rights', 'Judicial Review', 'Federalism', 'Separation of Powers'],
+            'Criminal Law': ['Criminal Procedure', 'Criminal Defense', 'Prosecution', 'Sentencing', 'Evidence'],
+            'Civil Law': ['Torts', 'Contracts', 'Property', 'Civil Procedure', 'Remedies'],
+            'Contract Law': ['Contract Formation', 'Breach of Contract', 'Remedies', 'Contract Interpretation'],
+            'Corporate Law': ['Business Organizations', 'Corporate Governance', 'Mergers & Acquisitions', 'Securities'],
+            'International Law': ['Treaties', 'Human Rights', 'War Laws', 'International Courts', 'Sovereignty'],
+            'Environmental Law': ['Environmental Regulations', 'Climate Law', 'Pollution Control', 'Natural Resources'],
+            'Intellectual Property': ['Patents', 'Trademarks', 'Copyrights', 'Trade Secrets', 'IP Litigation'],
+            'Tax Law': ['Income Tax', 'Corporate Tax', 'Tax Planning', 'Tax Compliance', 'International Tax'],
+            'Family Law': ['Divorce', 'Child Custody', 'Adoption', 'Marriage', 'Domestic Relations'],
+            'Epidemiology': ['Disease Patterns', 'Outbreak Investigation', 'Study Design', 'Statistical Methods'],
+            'Pathology': ['Disease Diagnosis', 'Histopathology', 'Clinical Pathology', 'Autopsy', 'Laboratory Medicine'],
+            'Radiology': ['X-Ray', 'CT Scan', 'MRI', 'Ultrasound', 'Nuclear Medicine', 'Image Interpretation'],
+            'Dentistry': ['Oral Health', 'Dental Procedures', 'Orthodontics', 'Periodontics', 'Prosthodontics'],
+            'Veterinary Medicine': ['Animal Health', 'Veterinary Surgery', 'Animal Diseases', 'Veterinary Pharmacology'],
+            'Nutrition': ['Nutrients', 'Diet Planning', 'Metabolism', 'Nutritional Disorders', 'Sports Nutrition'],
+            'Kinesiology': ['Exercise Science', 'Biomechanics', 'Motor Learning', 'Exercise Physiology'],
+            'Physical Therapy': ['Rehabilitation', 'Therapeutic Exercise', 'Manual Therapy', 'Orthopedics'],
+            'Occupational Therapy': ['Activities of Daily Living', 'Adaptive Equipment', 'Sensory Integration'],
+            'Education Theory': ['Learning Theories', 'Pedagogy', 'Assessment', 'Instructional Design'],
+            'Curriculum Design': ['Curriculum Development', 'Learning Objectives', 'Instructional Materials'],
+            'Educational Psychology': ['Learning Processes', 'Motivation', 'Cognitive Development', 'Classroom Management'],
+            'Special Education': ['Learning Disabilities', 'IEP', 'Accommodations', 'Inclusive Education'],
+            'TESOL': ['English Language Teaching', 'Second Language Acquisition', 'ESL Methods', 'Language Assessment'],
+            'Early Childhood Education': ['Child Development', 'Play-Based Learning', 'Early Literacy', 'Preschool'],
+            'Agriculture': ['Crop Production', 'Soil Management', 'Farm Management', 'Agricultural Economics'],
+            'Agronomy': ['Crop Science', 'Plant Breeding', 'Pest Management', 'Sustainable Agriculture'],
+            'Horticulture': ['Garden Design', 'Plant Propagation', 'Landscape Management', 'Greenhouse Management'],
+            'Animal Science': ['Animal Nutrition', 'Animal Breeding', 'Livestock Management', 'Dairy Science'],
+            'Forestry': ['Forest Management', 'Tree Biology', 'Forest Ecology', 'Timber Harvesting'],
+            'Soil Science': ['Soil Chemistry', 'Soil Physics', 'Soil Biology', 'Soil Conservation'],
+            'Wildlife Management': ['Wildlife Biology', 'Conservation Biology', 'Habitat Management', 'Population Dynamics'],
+            'Architecture': ['Architectural Design', 'Building Technology', 'Urban Design', 'Sustainable Architecture'],
+            'Interior Design': ['Space Planning', 'Color Theory', 'Furniture Design', 'Residential Design'],
+            'Graphic Design': ['Typography', 'Layout Design', 'Branding', 'Digital Design', 'Print Design'],
+            'Industrial Design': ['Product Design', 'Ergonomics', 'Materials', 'Manufacturing'],
+            'Fashion Design': ['Garment Construction', 'Fashion Illustration', 'Textiles', 'Fashion History'],
+            'Urban Design': ['City Planning', 'Public Spaces', 'Streetscape Design', 'Mixed-Use Development'],
+            'Landscape Architecture': ['Site Planning', 'Planting Design', 'Grading', 'Outdoor Spaces'],
+            'Actuarial Science': ['Risk Assessment', 'Probability', 'Financial Mathematics', 'Insurance Mathematics'],
+            'Sports Science': ['Exercise Physiology', 'Sports Psychology', 'Coaching', 'Sports Medicine'],
+            'Military Science': ['Military Strategy', 'Tactics', 'Leadership', 'National Security'],
+            'Aviation': ['Flight Training', 'Aeronautics', 'Air Traffic Control', 'Aviation Safety'],
+            'Hospitality Management': ['Hotel Management', 'Food Service', 'Tourism', 'Event Planning'],
+            'Library Science': ['Information Organization', 'Library Management', 'Information Retrieval', 'Archives'],
+            'Forensic Science': ['Crime Scene Investigation', 'Forensic Analysis', 'DNA Analysis', 'Ballistics'],
+            'Fire Science': ['Fire Prevention', 'Fire Suppression', 'Fire Investigation', 'Emergency Response'],
+            'Emergency Management': ['Disaster Preparedness', 'Crisis Response', 'Risk Management', 'Recovery Planning'],
+            'Cosmetology': ['Hair Styling', 'Makeup Application', 'Nail Care', 'Skin Care'],
+            'Culinary Arts': ['Cooking Techniques', 'Baking', 'Food Safety', 'Menu Planning', 'Nutrition']
+        };
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
@@ -700,8 +1413,74 @@ Press Ctrl+Enter to search"></textarea>
 
         function selectSubject(subject) {
             currentSubject = subject;
+            currentTopic = null; // Reset topic when changing subject
+            
             document.querySelectorAll('.subject-chip').forEach(chip => chip.classList.remove('active'));
             event.target.classList.add('active');
+
+            // Show topic section and populate topics
+            const topicSection = document.getElementById('topicSection');
+            topicSection.classList.add('show');
+            populateTopics();
+            
+            // Scroll to topic section smoothly
+            setTimeout(() => {
+                document.getElementById('topicSection').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 300);
+        }
+
+        function populateTopics() {
+            const topicGrid = document.getElementById('topicGrid');
+            const topics = subjectTopics[currentSubject] || [];
+            
+            topicGrid.innerHTML = topics.map(topic => 
+                `<div class="topic-item" onclick="selectTopic('${topic}')">${topic}</div>`
+            ).join('');
+
+            document.getElementById('topicSearch').value = '';
+            document.getElementById('selectedTopicBadge').innerHTML = '';
+        }
+
+        function selectTopic(topic) {
+            currentTopic = topic;
+            
+            // Update active state
+            document.querySelectorAll('.topic-item').forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Show selected topic badge
+            document.getElementById('selectedTopicBadge').innerHTML = 
+                `<span class="selected-topic-badge">${topic}</span>`;
+        }
+
+        function filterTopics() {
+            const searchTerm = document.getElementById('topicSearch').value.toLowerCase();
+            const topicItems = document.querySelectorAll('.topic-item');
+            
+            topicItems.forEach(item => {
+                const topicName = item.textContent.toLowerCase();
+                if (topicName.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleMoreSubjects() {
+            const dropdown = document.getElementById('moreSubjectsDropdown');
+            const text = document.getElementById('moreSubjectsText');
+            
+            dropdown.classList.toggle('show');
+            
+            if (dropdown.classList.contains('show')) {
+                text.textContent = '➖ Hide Subjects';
+            } else {
+                text.textContent = '➕ More Subjects (150+)';
+            }
         }
 
         function useExample(text) {
@@ -709,41 +1488,11 @@ Press Ctrl+Enter to search"></textarea>
             document.getElementById('searchInput').focus();
         }
 
-        // Image Upload Functions
-        function handleImageUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    uploadedImage = e.target.result;
-                    document.getElementById('previewImg').src = uploadedImage;
-                    document.getElementById('imagePreview').classList.add('show');
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function openCamera() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.capture = 'environment';
-            input.onchange = handleImageUpload;
-            input.click();
-        }
-
-        function removeImage() {
-            uploadedImage = null;
-            document.getElementById('imagePreview').classList.remove('show');
-            document.getElementById('imageUpload').value = '';
-        }
-
         function clearSearch() {
             document.getElementById('searchInput').value = '';
-            removeImage();
             document.getElementById('resultsContent').innerHTML = `
                 <div class="results-placeholder">
-                    Enter your question above or upload/take a photo to see the AI-powered response
+                    Enter your question above to see the AI-powered response
                 </div>
             `;
             hideViewAnswerBtn();
@@ -752,8 +1501,8 @@ Press Ctrl+Enter to search"></textarea>
         async function performSearch() {
             const query = document.getElementById('searchInput').value;
             
-            if (!query.trim() && !uploadedImage) {
-                alert('Please enter a question or upload an image!');
+            if (!query.trim()) {
+                alert('Please enter a question!');
                 return;
             }
 
@@ -769,84 +1518,59 @@ Press Ctrl+Enter to search"></textarea>
             showViewAnswerBtn();
 
             try {
-                let messages = [];
+                const topicContext = currentTopic ? `Focus specifically on ${currentTopic} concepts.` : '';
+                
+                const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: "llama-3.3-70b-versatile",
+                        messages: [{
+                            role: "user",
+                            content: `You are an expert ${currentSubject} tutor. ${topicContext}
 
-                if (uploadedImage) {
-                    // Vision API call
-                    messages = [{
-                        role: "user",
-                        content: [
-                            {
-                                type: "text",
-                                text: query || `You are a ${currentSubject} tutor. Analyze this image and provide a detailed explanation. If it contains a problem, solve it step-by-step. If it's a diagram or graph, explain what it shows.`
-                            },
-                            {
-                                type: "image_url",
-                                image_url: {
-                                    url: uploadedImage
-                                }
-                            }
-                        ]
-                    }];
+Answer this question with detailed step-by-step explanations:
 
-                    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-                        method: "POST",
-                        headers: { 
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${apiKey}`
-                        },
-                        body: JSON.stringify({
-                            model: "llama-3.2-90b-vision-preview",
-                            messages: messages,
-                            temperature: 0.7,
-                            max_tokens: 3000
-                        })
-                    });
+${query}
 
-                    const data = await response.json();
-                    
-                    if (data.error) {
-                        throw new Error(data.error.message);
-                    }
-                    
-                    const answer = data.choices[0].message.content;
-                    resultsContent.innerHTML = `
-                        <div class="results-content">
-                            ${answer.replace(/\n/g, '<br>')}
-                        </div>
-                    `;
-                } else {
-                    // Text-only API call
-                    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-                        method: "POST",
-                        headers: { 
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${apiKey}`
-                        },
-                        body: JSON.stringify({
-                            model: "llama-3.3-70b-versatile",
-                            messages: [{
-                                role: "user",
-                                content: `You are an expert ${currentSubject} tutor. Answer this question with detailed step-by-step explanations:\n\n${query}\n\nProvide a comprehensive, educational response.`
-                            }],
-                            temperature: 0.7,
-                            max_tokens: 3000
-                        })
-                    });
+Provide a comprehensive, educational response using this format:
+- Use **bold text** for key concepts and important terms
+- Break down into clear numbered steps
+- Explain the reasoning behind each step
+- Include relevant formulas or principles
+- Make it easy to understand
 
-                    const data = await response.json();
-                    
-                    if (data.error) {
-                        throw new Error(data.error.message);
-                    }
-                    
-                    const answer = data.choices[0].message.content;
-                    resultsContent.innerHTML = `
-                        <div class="results-content">
-                            ${answer.replace(/\n/g, '<br>')}
-                        </div>
-                    `;
+Format your response with clear headings and structured explanations.`
+                        }],
+                        temperature: 0.7,
+                        max_tokens: 3000
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error.message);
                 }
+                
+                const answer = data.choices[0].message.content;
+                
+                // Format the answer with better structure
+                let formattedAnswer = answer
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+                    .replace(/\n\n/g, '</p><p>') // Paragraphs
+                    .replace(/\n/g, '<br>') // Line breaks
+                    .replace(/(\d+\.)/g, '<br><strong>$1</strong>') // Number lists
+                    .replace(/^- /gm, '• '); // Bullet points
+                
+                resultsContent.innerHTML = `
+                    <div class="results-content">
+                        <p>${formattedAnswer}</p>
+                    </div>
+                `;
                 
             } catch (error) {
                 resultsContent.innerHTML = `
