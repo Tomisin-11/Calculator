@@ -176,9 +176,10 @@
         /* Mode Selection Cards */
         .mode-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             width: 100%;
+            margin-bottom: 30px;
             max-width: 1000px;
             margin-top: 40px;
         }
@@ -320,6 +321,11 @@
             }
         }
 
+        
+        .mode-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .navbar {
@@ -404,8 +410,29 @@
                         Launch Search
                         <span>→</span>
                     </a>
-                </div>
+                
+                <!-- Study Mode Card -->
+                
             </div>
+            </div>
+
+             <div class="mode-card" onclick="window.location.href='study.html'">
+                    <div class="mode-icon">📚</div>
+                    <h2 class="mode-title">Study Mode</h2>
+                    <p class="mode-description">
+                        Personalized study plans and interactive learning tools
+                    </p>
+                    <ul class="mode-features">
+                        <li>Custom study schedules</li>
+                        <li>Flashcards & quizzes</li>
+                        <li>Progress tracking</li>
+                        <li>Study reminders</li>
+                    </ul>
+                    <a href="study.html" class="mode-button">
+                        Launch Study
+                        <span>→</span>
+                    </a>
+                </div>
         </div>
     </div>
 
