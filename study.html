@@ -25,8 +25,11 @@
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 30px; }
         .card { background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; cursor: pointer; text-align: center; transition: all 0.3s; }
         .card:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,136,0,0.5); transform: translateY(-4px); }
+        .card.selected { background: rgba(99,102,241,0.15); border-color: rgba(99,102,241,0.5); }
+        .card.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
         .btn { padding: 14px 28px; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: #fff; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 20px; }
         .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(99,102,241,0.5); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
         .back-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-bottom: 20px; display: inline-block; }
         .back-btn:hover { background: rgba(255,255,255,0.08); }
         .quiz-question { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; margin-bottom: 20px; }
@@ -35,7 +38,9 @@
         .quiz-option.selected { border-color: #6366f1; background: rgba(99,102,241,0.1); }
         .quiz-option.correct { border-color: #00ff88; background: rgba(0,255,136,0.1); }
         .quiz-option.wrong { border-color: #ff6666; background: rgba(255,100,100,0.1); }
-        .timer { position: fixed; top: 100px; right: 40px; background: rgba(0,0,0,0.9); padding: 20px; border-radius: 12px; font-size: 24px; font-weight: 700; border: 2px solid rgba(255,136,0,0.5); }
+        .timer { position: fixed; top: 100px; right: 40px; background: rgba(0,0,0,0.9); padding: 20px; border-radius: 12px; font-size: 24px; font-weight: 700; border: 2px solid rgba(255,136,0,0.5); z-index: 999; }
+        .timer.warning { border-color: #ff6666; animation: pulse 1s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
         .progress { background: rgba(255,255,255,0.1); height: 8px; border-radius: 4px; margin: 20px 0; overflow: hidden; }
         .progress-fill { background: linear-gradient(90deg, #6366f1, #00ff88); height: 100%; transition: width 0.3s; }
         .score-card { background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2)); border: 2px solid rgba(99,102,241,0.5); border-radius: 20px; padding: 40px; text-align: center; margin: 30px 0; }
@@ -45,47 +50,19 @@
         select { padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; font-size: 14px; cursor: pointer; width: 100%; margin: 10px 0; }
         .roadmap { background: rgba(255,255,255,0.03); border-left: 4px solid #ff8800; padding: 24px; border-radius: 12px; margin: 20px 0; line-height: 1.8; }
         .explanation { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin: 16px 0; border-left: 3px solid #6366f1; }
-        @media (max-width: 768px) { .navbar { padding: 0 20px; } .nav-links { display: none; } .container { padding: 20px; } .timer { right: 20px; padding: 12px; font-size: 18px; } }
-    
+        .subject-tag { display: inline-block; background: rgba(99,102,241,0.2); padding: 6px 12px; border-radius: 8px; margin: 4px; font-size: 13px; }
+        .mandatory { background: rgba(255,136,0,0.2); border: 1px solid rgba(255,136,0,0.5); }
+        .results-table { width: 100%; margin: 20px 0; border-collapse: collapse; }
+        .results-table th, .results-table td { padding: 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .results-table th { background: rgba(255,255,255,0.05); font-weight: 700; }
+        .total-row { background: rgba(0,255,136,0.1); border-top: 2px solid rgba(0,255,136,0.5); font-weight: 700; font-size: 18px; }
         
-        /* Comprehensive Responsive Design */
-        @media (max-width: 1200px) {
-            .container { max-width: 100%; padding: 40px 16px; }
-        }
-        
-        @media (max-width: 768px) {
-            .navbar { padding: 0 20px; height: 60px; }
-            .logo { font-size: 24px; }
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
-            
-            .container { margin-top: 80px; padding: 20px 16px; }
-            .page-header h1 { font-size: 32px; }
-            .page-header p { font-size: 14px; }
-            
-            .mode-btns { gap: 8px; }
-            .mode-btn { min-width: 100px; padding: 10px 16px; font-size: 13px; }
-            
-            .feature-grid { grid-template-columns: 1fr; gap: 16px; }
-            .feature-card { padding: 20px; }
-            
-            .schedule-grid { grid-template-columns: 1fr; }
-            .schedule-card { padding: 16px; }
-            
-            .quiz-card, .flashcard { padding: 24px; }
-        }
-        
-        @media (max-width: 480px) {
-            .navbar { padding: 0 16px; }
-            .logo { font-size: 20px; }
-            
-            .container { margin-top: 70px; padding: 16px 12px; }
-            .page-header h1 { font-size: 28px; }
-            
-            .mode-btns { flex-direction: column; }
-            .mode-btn { width: 100%; min-width: auto; }
-            
-            .feature-card, .quiz-card, .flashcard { padding: 16px; }
+        @media (max-width: 768px) { 
+            .navbar { padding: 0 20px; } 
+            .nav-links { display: none; } 
+            .container { padding: 20px; } 
+            .timer { right: 20px; padding: 12px; font-size: 18px; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -106,14 +83,75 @@
             <button class="mode-btn">📚 Study</button>
         </div>
 
-        <!-- Step 1: Subject Selection -->
-        <div class="step active" id="step1">
+        <!-- Step 0: Initial Mode Selection -->
+        <div class="step active" id="step0">
+            <h1>Welcome to Study Mode</h1>
+            <p style="color: #888; margin-bottom: 10px;">Choose how you want to learn</p>
+            <div class="grid">
+                <div class="card" onclick="selectInitialMode('cbt')">
+                    <h2 style="font-size: 48px; margin-bottom: 16px;">💻</h2>
+                    <h3>CBT Exam</h3>
+                    <p style="color: #888; margin-top: 8px;">Practice JAMB, WAEC, NECO</p>
+                </div>
+                <div class="card" onclick="selectInitialMode('study')">
+                    <h2 style="font-size: 48px; margin-bottom: 16px;">📖</h2>
+                    <h3>Study Mode</h3>
+                    <p style="color: #888; margin-top: 8px;">Learn with AI tutor</p>
+                </div>
+                <div class="card" onclick="selectInitialMode('quiz')">
+                    <h2 style="font-size: 48px; margin-bottom: 16px;">📝</h2>
+                    <h3>Quiz Mode</h3>
+                    <p style="color: #888; margin-top: 8px;">Quick topic quiz</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CBT Course Selection -->
+        <div class="step" id="cbtCourse">
+            <div class="back-btn" onclick="goToStep(0)">← Back</div>
+            <h1>Select Your Course (Optional)</h1>
+            <p style="color: #888; margin-bottom: 10px;">This helps us recommend subjects for you</p>
+            <div class="grid" id="courseGrid"></div>
+            <button class="btn" onclick="skipCourse()">Skip & Continue</button>
+        </div>
+
+        <!-- CBT Subject Selection -->
+        <div class="step" id="cbtSubjects">
+            <div class="back-btn" onclick="goToStep('cbtCourse')">← Back</div>
+            <h1>Select Your Subjects</h1>
+            <p style="color: #888; margin-bottom: 10px;">English is mandatory. Choose 3 more subjects.</p>
+            <div id="selectedSubjectsDisplay" style="margin: 20px 0;"></div>
+            <div class="grid" id="cbtSubjectGrid"></div>
+            <button class="btn" id="startCBTBtn" onclick="startCBTExam()" disabled>Start CBT Exam</button>
+        </div>
+
+        <!-- CBT Exam -->
+        <div class="step" id="cbtExam">
+            <div class="timer" id="cbtTimer" style="display: none;">00:00</div>
+            <h1>CBT Examination</h1>
+            <div class="progress">
+                <div class="progress-fill" id="cbtProgress" style="width: 0%;"></div>
+            </div>
+            <div id="cbtContent"></div>
+            <button class="btn" onclick="submitCBT()">Submit Exam</button>
+        </div>
+
+        <!-- CBT Results -->
+        <div class="step" id="cbtResults">
+            <h1>🎉 CBT Exam Results</h1>
+            <div id="cbtResultsContent"></div>
+            <button class="btn" onclick="goToStep(0)">Take Another Exam</button>
+            <button class="btn" style="background: rgba(255,255,255,0.1); margin-left: 10px;" onclick="reviewCBTAnswers()">Review Answers</button>
+        </div>
+
+        <!-- Original Study Mode Steps -->
+        <div class="step" id="step1">
+            <div class="back-btn" onclick="goToStep(0)">← Back</div>
             <h1>Choose Your Subject</h1>
             <p style="color: #888; margin-bottom: 10px;">Select a subject to study</p>
             <div class="grid" id="subjectGrid"></div>
         </div>
 
-        <!-- Step 2: Topic Selection -->
         <div class="step" id="step2">
             <div class="back-btn" onclick="goToStep(1)">← Back</div>
             <h1 id="subjectTitle">Mathematics</h1>
@@ -121,7 +159,6 @@
             <div class="grid" id="topicGrid"></div>
         </div>
 
-        <!-- Step 3: Mode Selection -->
         <div class="step" id="step3">
             <div class="back-btn" onclick="goToStep(2)">← Back</div>
             <h1>How do you want to learn?</h1>
@@ -139,228 +176,661 @@
             </div>
         </div>
 
-        <!-- Step 4: Study Roadmap Choice -->
         <div class="step" id="step4">
             <div class="back-btn" onclick="goToStep(3)">← Back</div>
-            <h1>Study Mode</h1>
-            <p style="color: #888;">Do you want a complete learning roadmap for <span id="topicName" style="color: #ff8800;"></span>?</p>
+            <h1>Choose Your Learning Path</h1>
             <div class="grid">
-                <div class="card" onclick="generateRoadmap()">
+                <div class="card" onclick="chooseStudyPath('roadmap')">
                     <h2 style="font-size: 48px; margin-bottom: 16px;">🗺️</h2>
-                    <h3>Yes, Roadmap</h3>
-                    <p style="color: #888; margin-top: 8px;">Get structured path</p>
+                    <h3>Structured Roadmap</h3>
+                    <p style="color: #888; margin-top: 8px;">Step-by-step learning plan</p>
                 </div>
-                <div class="card" onclick="customStudy()">
-                    <h2 style="font-size: 48px; margin-bottom: 16px;">✏️</h2>
-                    <h3>Custom Learning</h3>
-                    <p style="color: #888; margin-top: 8px;">Tell me what to learn</p>
+                <div class="card" onclick="chooseStudyPath('explain')">
+                    <h2 style="font-size: 48px; margin-bottom: 16px;">💡</h2>
+                    <h3>Direct Explanation</h3>
+                    <p style="color: #888; margin-top: 8px;">Learn the concept now</p>
+                </div>
+                <div class="card" onclick="chooseStudyPath('practice')">
+                    <h2 style="font-size: 48px; margin-bottom: 16px;">✍️</h2>
+                    <h3>Practice Problems</h3>
+                    <p style="color: #888; margin-top: 8px;">Solve & learn</p>
                 </div>
             </div>
         </div>
 
-        <!-- Step 5: Quiz Settings -->
         <div class="step" id="step5">
-            <div class="back-btn" onclick="goToStep(3)">← Back</div>
-            <h1>Quiz Settings</h1>
-            <div style="max-width: 500px; margin: 30px auto;">
-                <label style="display: block; margin-bottom: 8px; color: #888;">Number of Questions:</label>
-                <select id="numQuestions">
-                    <option value="5">5 Questions</option>
-                    <option value="10" selected>10 Questions</option>
-                    <option value="15">15 Questions</option>
-                    <option value="20">20 Questions</option>
-                </select>
-                
-                <label style="display: block; margin-bottom: 8px; margin-top: 20px; color: #888;">Timer:</label>
-                <select id="quizTimer">
-                    <option value="0">No Timer</option>
-                    <option value="5">5 Minutes</option>
-                    <option value="10" selected>10 Minutes</option>
-                    <option value="15">15 Minutes</option>
-                    <option value="20">20 Minutes</option>
-                    <option value="30">30 Minutes</option>
-                </select>
-                
-                <button class="btn" style="width: 100%;" onclick="startQuiz()">Start Quiz</button>
-            </div>
-        </div>
-
-        <!-- Step 6: Study Content -->
-        <div class="step" id="step6">
             <div class="back-btn" onclick="goToStep(4)">← Back</div>
             <div id="studyContent"></div>
         </div>
 
-        <!-- Step 7: Custom Study Input -->
+        <div class="step" id="step6">
+            <div class="back-btn" onclick="goToStep(3)">← Back</div>
+            <h1>Choose Quiz Difficulty</h1>
+            <div class="grid">
+                <div class="card" onclick="startQuiz('easy')">
+                    <h2 style="font-size: 48px; margin-bottom: 16px;">🟢</h2>
+                    <h3>Easy</h3>
+                    <p style="color: #888; margin-top: 8px;">5 basic questions</p>
+                </div>
+                <div class="card" onclick="startQuiz('medium')">
+                    <h2 style="font-size: 48px; margin-bottom: 16px;">🟡</h2>
+                    <h3>Medium</h3>
+                    <p style="color: #888; margin-top: 8px;">10 moderate questions</p>
+                </div>
+                <div class="card" onclick="startQuiz('hard')">
+                    <h2 style="font-size: 48px; margin-bottom: 16px;">🔴</h2>
+                    <h3>Hard</h3>
+                    <p style="color: #888; margin-top: 8px;">15 challenging questions</p>
+                </div>
+            </div>
+        </div>
+
         <div class="step" id="step7">
-            <div class="back-btn" onclick="goToStep(4)">← Back</div>
-            <h1>What do you want to learn?</h1>
-            <p style="color: #888; margin-bottom: 20px;">Tell me what you'd like to learn about <span id="customTopicName" style="color: #ff8800;"></span></p>
-            <textarea id="customInput" placeholder="Example: I want to understand how to solve quadratic equations step by step"></textarea>
-            <button class="btn" onclick="teachCustom()">Teach Me</button>
-        </div>
-
-        <!-- Step 8: Quiz -->
-        <div class="step" id="step8">
+            <div class="back-btn" onclick="goToStep(6)">← Back</div>
             <div class="timer" id="timerDisplay" style="display: none;"></div>
-            <div class="progress"><div class="progress-fill" id="quizProgress" style="width: 0%;"></div></div>
+            <h1 id="quizTitle">Quiz Time!</h1>
+            <div class="progress">
+                <div class="progress-fill" id="quizProgress" style="width: 0%;"></div>
+            </div>
             <div id="quizContent"></div>
-            <button class="btn" onclick="submitQuiz()" style="width: 100%;">Submit Quiz</button>
+            <button class="btn" onclick="submitQuiz()">Submit Quiz</button>
         </div>
 
-        <!-- Step 9: Quiz Results -->
         <div class="step" id="step9">
+            <div class="back-btn" onclick="goToStep(0)">← Start Over</div>
             <div id="resultsContent"></div>
-            <button class="btn" onclick="goToStep(1)">Take Another Quiz</button>
-            <button class="btn" style="background: rgba(255,255,255,0.1); margin-left: 12px;" onclick="location.reload()">Start Over</button>
         </div>
     </div>
 
     <script>
-        const apiKey = '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';
+        const apiKey = "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";
+        
+        // Global variables
+        let currentMode = '';
         let currentSubject = '';
         let currentTopic = '';
         let quizData = [];
         let userAnswers = [];
         let timerInterval = null;
-        let quizHistory = JSON.parse(localStorage.getItem('quizHistory')) || [];
+        let quizHistory = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+        
+        // CBT Variables
+        let selectedCourse = '';
+        let selectedSubjects = ['English']; // English is mandatory
+        let cbtQuestions = {};
+        let cbtAnswers = {};
+        let cbtStartTime = 0;
 
         const subjects = {
-            'Mathematics': ['Algebra', 'Geometry', 'Trigonometry', 'Calculus', 'Statistics'],
-            'Physics': ['Mechanics', 'Thermodynamics', 'Electricity', 'Waves', 'Optics'],
-            'Chemistry': ['Organic', 'Inorganic', 'Physical Chemistry', 'Analytical'],
-            'Biology': ['Cell Biology', 'Genetics', 'Evolution', 'Ecology'],
-            'Computer Science': ['Algorithms', 'Data Structures', 'AI', 'Web Dev'],
-            'Engineering': ['Mechanical', 'Electrical', 'Civil', 'Software'],
-            'Economics': ['Micro', 'Macro', 'International', 'Finance'],
-            'Psychology': ['Cognitive', 'Developmental', 'Social', 'Clinical']
+            'Mathematics': ['Algebra', 'Geometry', 'Calculus', 'Statistics', 'Trigonometry'],
+            'Physics': ['Mechanics', 'Electricity', 'Waves', 'Thermodynamics', 'Modern Physics'],
+            'Chemistry': ['Organic Chemistry', 'Inorganic Chemistry', 'Physical Chemistry', 'Analytical Chemistry'],
+            'Biology': ['Cell Biology', 'Genetics', 'Ecology', 'Human Anatomy', 'Evolution'],
+            'English': ['Grammar', 'Comprehension', 'Essay Writing', 'Literature', 'Vocabulary'],
+            'Economics': ['Microeconomics', 'Macroeconomics', 'Development Economics', 'International Trade'],
+            'Government': ['Political Systems', 'Constitution', 'International Relations', 'Public Administration'],
+            'Geography': ['Physical Geography', 'Human Geography', 'Map Reading', 'Climate'],
+            'Literature': ['Poetry', 'Drama', 'Prose', 'African Literature', 'Literary Criticism'],
+            'Commerce': ['Trade', 'Banking', 'Insurance', 'Marketing', 'Business Management'],
+            'Accounting': ['Financial Accounting', 'Cost Accounting', 'Auditing', 'Taxation'],
+            'Computer Science': ['Programming', 'Data Structures', 'Databases', 'Networks', 'Operating Systems'],
+            'Agricultural Science': ['Crop Production', 'Animal Husbandry', 'Soil Science', 'Farm Management'],
+            'CRK': ['Old Testament', 'New Testament', 'Christian Ethics', 'Church History']
         };
 
-        window.addEventListener('load', init);
+        const courses = [
+            'Medicine & Surgery',
+            'Engineering',
+            'Law',
+            'Computer Science',
+            'Business Administration',
+            'Economics',
+            'Mass Communication',
+            'Pharmacy',
+            'Nursing',
+            'Architecture',
+            'Agriculture',
+            'Education'
+        ];
+
+        const courseSubjectRecommendations = {
+            'Medicine & Surgery': ['English', 'Biology', 'Chemistry', 'Physics'],
+            'Engineering': ['English', 'Mathematics', 'Physics', 'Chemistry'],
+            'Law': ['English', 'Literature', 'Government', 'CRK'],
+            'Computer Science': ['English', 'Mathematics', 'Physics', 'Computer Science'],
+            'Business Administration': ['English', 'Mathematics', 'Economics', 'Commerce'],
+            'Economics': ['English', 'Mathematics', 'Economics', 'Government'],
+            'Mass Communication': ['English', 'Literature', 'Government', 'Economics'],
+            'Pharmacy': ['English', 'Chemistry', 'Biology', 'Physics'],
+            'Nursing': ['English', 'Biology', 'Chemistry', 'Physics'],
+            'Architecture': ['English', 'Mathematics', 'Physics', 'Geography'],
+            'Agriculture': ['English', 'Chemistry', 'Biology', 'Agricultural Science'],
+            'Education': ['English', 'Mathematics', 'Any Subject', 'Any Subject']
+        };
+
+        // Initialize
+        init();
 
         function init() {
-            renderSubjects();
+            loadSubjects();
+            loadCourses();
         }
 
-        function renderSubjects() {
+        function loadSubjects() {
             const grid = document.getElementById('subjectGrid');
-            grid.innerHTML = Object.keys(subjects).map(s => `
-                <div class="card" onclick="selectSubject('${s}')">
-                    <h3>${s}</h3>
+            grid.innerHTML = Object.keys(subjects).map(subject => `
+                <div class="card" onclick="selectSubject('${subject}')">
+                    <h3>${subject}</h3>
                 </div>
             `).join('');
         }
 
+        function loadCourses() {
+            const grid = document.getElementById('courseGrid');
+            grid.innerHTML = courses.map(course => `
+                <div class="card" onclick="selectCourse('${course}')">
+                    <h3>${course}</h3>
+                </div>
+            `).join('');
+        }
+
+        function selectInitialMode(mode) {
+            currentMode = mode;
+            if (mode === 'cbt') {
+                goToStep('cbtCourse');
+            } else if (mode === 'study') {
+                goToStep(1);
+            } else if (mode === 'quiz') {
+                goToStep(1);
+            }
+        }
+
+        function selectCourse(course) {
+            selectedCourse = course;
+            // Highlight recommended subjects
+            const recommended = courseSubjectRecommendations[course] || [];
+            goToStep('cbtSubjects');
+            loadCBTSubjects(recommended);
+        }
+
+        function skipCourse() {
+            selectedCourse = '';
+            goToStep('cbtSubjects');
+            loadCBTSubjects([]);
+        }
+
+        function loadCBTSubjects(recommended = []) {
+            const grid = document.getElementById('cbtSubjectGrid');
+            const allSubjects = Object.keys(subjects);
+            
+            grid.innerHTML = allSubjects.map(subject => {
+                const isSelected = selectedSubjects.includes(subject);
+                const isMandatory = subject === 'English';
+                const isRecommended = recommended.includes(subject);
+                const isDisabled = selectedSubjects.length >= 4 && !isSelected && !isMandatory;
+                
+                return `
+                    <div class="card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}" 
+                         onclick="toggleCBTSubject('${subject}', ${isMandatory})">
+                        <h3>${subject}</h3>
+                        ${isMandatory ? '<span class="subject-tag mandatory">Mandatory</span>' : ''}
+                        ${isRecommended && !isMandatory ? '<span class="subject-tag">Recommended</span>' : ''}
+                        ${isSelected ? '<p style="color: #00ff88; margin-top: 8px;">✓ Selected</p>' : ''}
+                    </div>
+                `;
+            }).join('');
+            
+            updateSelectedSubjectsDisplay();
+        }
+
+        function toggleCBTSubject(subject, isMandatory) {
+            if (isMandatory) return; // Can't deselect English
+            
+            const index = selectedSubjects.indexOf(subject);
+            if (index > -1) {
+                selectedSubjects.splice(index, 1);
+            } else {
+                if (selectedSubjects.length < 4) {
+                    selectedSubjects.push(subject);
+                } else {
+                    alert('You can only select 4 subjects total (including English)');
+                    return;
+                }
+            }
+            
+            loadCBTSubjects(selectedCourse ? courseSubjectRecommendations[selectedCourse] : []);
+            
+            // Enable/disable start button
+            document.getElementById('startCBTBtn').disabled = selectedSubjects.length !== 4;
+        }
+
+        function updateSelectedSubjectsDisplay() {
+            const display = document.getElementById('selectedSubjectsDisplay');
+            display.innerHTML = `
+                <div style="background: rgba(99,102,241,0.1); padding: 16px; border-radius: 12px; border: 1px solid rgba(99,102,241,0.3);">
+                    <strong>Selected Subjects (${selectedSubjects.length}/4):</strong><br>
+                    ${selectedSubjects.map(s => `<span class="subject-tag ${s === 'English' ? 'mandatory' : ''}">${s}</span>`).join('')}
+                </div>
+            `;
+        }
+
+        async function startCBTExam() {
+            if (selectedSubjects.length !== 4) {
+                alert('Please select exactly 4 subjects (including English)');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('startCBTBtn').textContent = 'Generating Questions...';
+            document.getElementById('startCBTBtn').disabled = true;
+
+            // Generate questions for each subject
+            cbtQuestions = {};
+            cbtAnswers = {};
+            
+            for (const subject of selectedSubjects) {
+                const questionCount = subject === 'English' ? 60 : 40;
+                const questions = await generateCBTQuestions(subject, questionCount);
+                cbtQuestions[subject] = questions;
+                cbtAnswers[subject] = new Array(questionCount).fill(null);
+            }
+
+            // Start exam
+            goToStep('cbtExam');
+            displayCBTQuestions();
+            startCBTTimer(180); // 3 hours = 180 minutes
+        }
+
+        async function generateCBTQuestions(subject, count) {
+            const prompt = `Generate ${count} multiple choice questions for ${subject} at JAMB/WAEC level.
+
+Format each question EXACTLY as:
+Q: [question text]
+A) [option A]
+B) [option B]
+C) [option C]
+D) [option D]
+ANSWER: [A/B/C/D]
+EXPLANATION: [brief explanation]
+
+---
+
+Make questions challenging and exam-appropriate. Cover various topics in ${subject}.`;
+
+            try {
+                const response = await callAI(prompt);
+                return parseCBTQuestions(response, count);
+            } catch (error) {
+                console.error('Error generating questions:', error);
+                return generateFallbackQuestions(subject, count);
+            }
+        }
+
+        function parseCBTQuestions(text, expectedCount) {
+            const questions = [];
+            const questionBlocks = text.split('---').filter(b => b.trim());
+            
+            for (const block of questionBlocks) {
+                const lines = block.trim().split('\n').filter(l => l.trim());
+                if (lines.length < 6) continue;
+                
+                let question = '', options = [], answer = '', explanation = '';
+                
+                for (const line of lines) {
+                    if (line.startsWith('Q:')) {
+                        question = line.substring(2).trim();
+                    } else if (line.match(/^[A-D]\)/)) {
+                        options.push(line.substring(2).trim());
+                    } else if (line.startsWith('ANSWER:')) {
+                        answer = line.substring(7).trim().charAt(0).toUpperCase();
+                    } else if (line.startsWith('EXPLANATION:')) {
+                        explanation = line.substring(12).trim();
+                    }
+                }
+                
+                if (question && options.length === 4 && answer) {
+                    const correctIndex = answer.charCodeAt(0) - 65; // A=0, B=1, C=2, D=3
+                    questions.push({
+                        question,
+                        options,
+                        correct: correctIndex,
+                        explanation: explanation || 'No explanation provided'
+                    });
+                }
+                
+                if (questions.length >= expectedCount) break;
+            }
+            
+            // Pad with fallback if needed
+            while (questions.length < expectedCount) {
+                questions.push(...generateFallbackQuestions('General', 1));
+            }
+            
+            return questions.slice(0, expectedCount);
+        }
+
+        function generateFallbackQuestions(subject, count) {
+            const questions = [];
+            for (let i = 0; i < count; i++) {
+                questions.push({
+                    question: `Sample ${subject} question ${i + 1}. What is the correct answer?`,
+                    options: ['Option A', 'Option B', 'Option C', 'Option D'],
+                    correct: Math.floor(Math.random() * 4),
+                    explanation: 'This is a sample question.'
+                });
+            }
+            return questions;
+        }
+
+        function displayCBTQuestions() {
+            const content = document.getElementById('cbtContent');
+            let html = '';
+            
+            for (const subject of selectedSubjects) {
+                const questions = cbtQuestions[subject];
+                const totalForSubject = questions.length;
+                html += `<h2 style="margin: 30px 0 20px 0; color: #ff8800;">${subject} Section</h2>`;
+                
+                questions.forEach((q, localIndex) => {
+                    html += `
+                        <div class="quiz-question">
+                            <h3>Question ${localIndex + 1} of ${totalForSubject}</h3>
+                            <p style="margin: 16px 0; font-size: 16px;">${q.question}</p>
+                            ${q.options.map((opt, optIndex) => `
+                                <div class="quiz-option" onclick="selectCBTAnswer('${subject}', ${localIndex}, ${optIndex})" 
+                                     id="cbt_${subject}_${localIndex}_${optIndex}">
+                                    ${String.fromCharCode(65 + optIndex)}. ${opt}
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                });
+            }
+            
+            content.innerHTML = html;
+        }
+
+        function getTotalQuestions() {
+            let total = 0;
+            for (const subject of selectedSubjects) {
+                total += subject === 'English' ? 60 : 40;
+            }
+            return total;
+        }
+
+        function selectCBTAnswer(subject, questionIndex, optionIndex) {
+            // Clear previous selection
+            const questions = cbtQuestions[subject];
+            for (let i = 0; i < 4; i++) {
+                const elem = document.getElementById(`cbt_${subject}_${questionIndex}_${i}`);
+                if (elem) elem.classList.remove('selected');
+            }
+            
+            // Select new
+            const selected = document.getElementById(`cbt_${subject}_${questionIndex}_${optionIndex}`);
+            if (selected) selected.classList.add('selected');
+            
+            cbtAnswers[subject][questionIndex] = optionIndex;
+            updateCBTProgress();
+        }
+
+        function updateCBTProgress() {
+            let answered = 0;
+            const total = getTotalQuestions();
+            
+            for (const subject of selectedSubjects) {
+                answered += cbtAnswers[subject].filter(a => a !== null).length;
+            }
+            
+            const progress = (answered / total) * 100;
+            document.getElementById('cbtProgress').style.width = progress + '%';
+        }
+
+        function startCBTTimer(minutes) {
+            const display = document.getElementById('cbtTimer');
+            display.style.display = 'block';
+            let seconds = minutes * 60;
+            
+            timerInterval = setInterval(() => {
+                seconds--;
+                const hrs = Math.floor(seconds / 3600);
+                const mins = Math.floor((seconds % 3600) / 60);
+                const secs = seconds % 60;
+                
+                display.textContent = `${hrs}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                
+                // Warning when 5 minutes left
+                if (seconds <= 300) {
+                    display.classList.add('warning');
+                }
+                
+                if (seconds <= 0) {
+                    clearInterval(timerInterval);
+                    submitCBT();
+                }
+            }, 1000);
+        }
+
+        function submitCBT() {
+            if (timerInterval) clearInterval(timerInterval);
+            
+            const confirm = window.confirm('Are you sure you want to submit your exam?');
+            if (!confirm && timerInterval) return;
+            
+            // Calculate scores
+            const results = {};
+            let totalScore = 0;
+            
+            for (const subject of selectedSubjects) {
+                let correct = 0;
+                const questions = cbtQuestions[subject];
+                const answers = cbtAnswers[subject];
+                
+                questions.forEach((q, i) => {
+                    if (answers[i] === q.correct) correct++;
+                });
+                
+                const totalQuestions = questions.length;
+                const score = Math.round((correct / totalQuestions) * 100);
+                
+                results[subject] = {
+                    correct,
+                    total: totalQuestions,
+                    score
+                };
+                
+                totalScore += score;
+            }
+            
+            displayCBTResults(results, totalScore);
+            goToStep('cbtResults');
+        }
+
+        function displayCBTResults(results, totalScore) {
+            const content = document.getElementById('cbtResultsContent');
+            
+            let html = `
+                <div class="score-card">
+                    <h2>${totalScore}</h2>
+                    <p style="font-size: 18px; color: #888;">Total Score out of 400</p>
+                </div>
+                
+                <h2 style="margin: 30px 0 20px 0;">Subject Breakdown:</h2>
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Correct</th>
+                            <th>Total</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            for (const subject of selectedSubjects) {
+                const r = results[subject];
+                html += `
+                    <tr>
+                        <td><strong>${subject}</strong></td>
+                        <td>${r.correct}</td>
+                        <td>${r.total}</td>
+                        <td><strong>${r.score}</strong></td>
+                    </tr>
+                `;
+            }
+            
+            html += `
+                    <tr class="total-row">
+                        <td colspan="3"><strong>TOTAL SCORE</strong></td>
+                        <td><strong>${totalScore}</strong></td>
+                    </tr>
+                    </tbody>
+                </table>
+                
+                <div style="background: rgba(99,102,241,0.1); padding: 20px; border-radius: 12px; margin: 30px 0; border: 1px solid rgba(99,102,241,0.3);">
+                    <h3>Performance Analysis</h3>
+                    <p style="color: #888; margin-top: 10px;">
+                        ${totalScore >= 250 ? '🎉 Excellent performance! You\'re well prepared!' : 
+                          totalScore >= 200 ? '👍 Good job! Keep practicing to improve further.' :
+                          totalScore >= 150 ? '📚 Fair performance. Focus on weak areas.' :
+                          '💪 Keep studying! You can do better with more practice.'}
+                    </p>
+                </div>
+            `;
+            
+            content.innerHTML = html;
+        }
+
+        function reviewCBTAnswers() {
+            alert('Review feature coming soon! You can see your answers and correct solutions.');
+        }
+
+        // Original functions for study/quiz mode
         function selectSubject(subject) {
             currentSubject = subject;
             document.getElementById('subjectTitle').textContent = subject;
+            loadTopics(subject);
+            goToStep(2);
+        }
+
+        function loadTopics(subject) {
             const grid = document.getElementById('topicGrid');
-            grid.innerHTML = subjects[subject].map(t => `
-                <div class="card" onclick="selectTopic('${t}')">
-                    <h3>${t}</h3>
+            grid.innerHTML = subjects[subject].map(topic => `
+                <div class="card" onclick="selectTopic('${topic}')">
+                    <h3>${topic}</h3>
                 </div>
             `).join('');
-            goToStep(2);
         }
 
         function selectTopic(topic) {
             currentTopic = topic;
-            document.getElementById('topicName').textContent = topic;
-            document.getElementById('customTopicName').textContent = topic;
             goToStep(3);
         }
 
         function chooseMode(mode) {
-            if (mode === 'study') goToStep(4);
-            else goToStep(5);
-        }
-
-        async function generateRoadmap() {
-            goToStep(6);
-            const content = document.getElementById('studyContent');
-            content.innerHTML = '<p style="color: #888;">Generating roadmap...</p>';
-            
-            const roadmap = await callAI(`Create a comprehensive learning roadmap for ${currentTopic} in ${currentSubject}. Include:
-1. Prerequisites (what to know first)
-2. Core concepts (in learning order)
-3. Practice problems for each concept
-4. Resources and tips
-5. Estimated timeline
-
-Make it detailed and well-structured.`);
-            
-            content.innerHTML = `<h1>📚 ${currentTopic} Roadmap</h1><div class="roadmap">${roadmap.replace(/\n/g, '<br>')}</div>`;
-        }
-
-        function customStudy() {
-            goToStep(7);
-        }
-
-        async function teachCustom() {
-            const input = document.getElementById('customInput').value.trim();
-            if (!input) { alert('Please enter what you want to learn!'); return; }
-            
-            goToStep(6);
-            const content = document.getElementById('studyContent');
-            content.innerHTML = '<p style="color: #888;">Teaching...</p>';
-            
-            const lesson = await callAI(`Teach me: ${input}
-
-Context: ${currentTopic} in ${currentSubject}
-
-Provide:
-1. Clear explanation
-2. Examples
-3. Step-by-step breakdowns
-4. Common mistakes to avoid
-5. Practice tips
-
-Make it detailed and easy to understand.`);
-            
-            content.innerHTML = `<h1>📖 ${currentTopic} - Custom Lesson</h1><div class="roadmap">${lesson.replace(/\n/g, '<br>')}</div>`;
-        }
-
-        async function startQuiz() {
-            const num = document.getElementById('numQuestions').value;
-            const timer = document.getElementById('quizTimer').value;
-            
-            goToStep(8);
-            document.getElementById('quizContent').innerHTML = '<p style="color: #888;">Generating questions...</p>';
-            
-            quizData = await generateQuestions(num);
-            userAnswers = new Array(quizData.length).fill(null);
-            displayQuiz();
-            
-            if (timer > 0) startTimer(timer * 60);
-        }
-
-        async function generateQuestions(num) {
-            const prompt = `Generate exactly ${num} multiple choice questions about ${currentTopic} in ${currentSubject}.
-
-Return ONLY a JSON array (no markdown, no backticks) in this exact format:
-[
-  {
-    "question": "Question text here?",
-    "options": ["Option A", "Option B", "Option C", "Option D"],
-    "correct": 0,
-    "explanation": "Why this answer is correct"
-  }
-]
-
-Make questions challenging but fair.`;
-
-            const response = await callAI(prompt);
-            try {
-                const cleaned = response.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-                return JSON.parse(cleaned);
-            } catch (e) {
-                return Array(parseInt(num)).fill(null).map((_, i) => ({
-                    question: `Sample question ${i + 1} about ${currentTopic}?`,
-                    options: ['Option A', 'Option B', 'Option C', 'Option D'],
-                    correct: 0,
-                    explanation: 'This is the correct answer.'
-                }));
+            if (mode === 'study') {
+                goToStep(4);
+            } else {
+                goToStep(6);
             }
+        }
+
+        async function chooseStudyPath(path) {
+            const content = document.getElementById('studyContent');
+            content.innerHTML = '<div style="text-align: center; padding: 40px;"><div style="font-size: 48px;">⏳</div><p>Generating content...</p></div>';
+            goToStep(5);
+            
+            let prompt = '';
+            if (path === 'roadmap') {
+                prompt = `Create a comprehensive learning roadmap for "${currentTopic}" in ${currentSubject}. Include:
+1. Prerequisites
+2. Main concepts (in order)
+3. Practice exercises
+4. Common mistakes
+5. Advanced topics
+
+Make it structured and easy to follow.`;
+            } else if (path === 'explain') {
+                prompt = `Explain "${currentTopic}" in ${currentSubject} in detail. Include:
+1. Simple explanation
+2. Key concepts
+3. Real-world examples
+4. Visual descriptions
+5. Summary
+
+Make it easy to understand for a student.`;
+            } else {
+                prompt = `Generate 5 practice problems for "${currentTopic}" in ${currentSubject}. For each:
+1. State the problem
+2. Show step-by-step solution
+3. Explain key concepts used
+4. Suggest similar practice
+
+Make them progressively harder.`;
+            }
+            
+            const response = await callAI(prompt);
+            content.innerHTML = `
+                <h1>${currentTopic} - ${currentSubject}</h1>
+                <div class="roadmap">${response.replace(/\n/g, '<br>')}</div>
+                <button class="btn" onclick="askFollowUp()">Ask a Question</button>
+                <button class="btn" style="background: rgba(255,255,255,0.1); margin-left: 10px;" onclick="goToStep(6)">Take a Quiz</button>
+            `;
+        }
+
+        async function askFollowUp() {
+            const question = prompt('What would you like to know?');
+            if (!question) return;
+            
+            const content = document.getElementById('studyContent');
+            content.innerHTML += '<div style="text-align: center; padding: 20px;"><div style="font-size: 32px;">⏳</div></div>';
+            
+            const response = await callAI(`Regarding "${currentTopic}" in ${currentSubject}:
+
+${question}
+
+Provide a clear, detailed answer.`);
+            
+            content.innerHTML += `
+                <div class="explanation">
+                    <strong>Your Question:</strong> ${question}<br><br>
+                    <strong>Answer:</strong><br>${response.replace(/\n/g, '<br>')}
+                </div>
+            `;
+        }
+
+        async function startQuiz(difficulty) {
+            const counts = { easy: 5, medium: 10, hard: 15 };
+            const count = counts[difficulty];
+            
+            document.getElementById('quizTitle').textContent = `${currentTopic} Quiz (${difficulty.toUpperCase()})`;
+            
+            const prompt = `Generate ${count} multiple choice questions about "${currentTopic}" in ${currentSubject}.
+Difficulty: ${difficulty}
+
+For each question, format EXACTLY as:
+Q: [question text]
+A) [option A]
+B) [option B]
+C) [option C]
+D) [option D]
+ANSWER: [A/B/C/D]
+EXPLANATION: [why this is correct]
+
+---
+
+Separate each question with "---"`;
+            
+            goToStep(7);
+            document.getElementById('quizContent').innerHTML = '<div style="text-align: center; padding: 40px;"><div style="font-size: 48px;">⏳</div><p>Generating quiz...</p></div>';
+            
+            const response = await callAI(prompt);
+            quizData = parseCBTQuestions(response, count);
+            userAnswers = new Array(count).fill(null);
+            
+            displayQuiz();
+            startTimer(count * 60); // 1 minute per question
         }
 
         function displayQuiz() {
@@ -379,12 +849,10 @@ Make questions challenging but fair.`;
         }
 
         function selectAnswer(qIndex, optIndex) {
-            // Clear previous selection
             for (let j = 0; j < 4; j++) {
                 const opt = document.getElementById(`q${qIndex}opt${j}`);
                 if (opt) opt.classList.remove('selected');
             }
-            // Select new
             document.getElementById(`q${qIndex}opt${optIndex}`).classList.add('selected');
             userAnswers[qIndex] = optIndex;
             updateProgress();
@@ -458,28 +926,12 @@ Make questions challenging but fair.`;
                             ${!isCorrect ? `
                                 <div class="explanation">
                                     <strong>Explanation:</strong><br>${q.explanation}
-                                    <button class="btn" style="margin-top: 12px; padding: 8px 16px; font-size: 13px;" onclick="retryQuestion(${i})">Retry This Question</button>
                                 </div>
                             ` : ''}
                         </div>
                     `;
                 }).join('')}
             `;
-        }
-
-        async function retryQuestion(index) {
-            const q = quizData[index];
-            const explain = await callAI(`Explain this concept in detail so I can understand and answer correctly:
-
-Question: ${q.question}
-Correct Answer: ${q.options[q.correct]}
-
-Provide:
-1. Detailed explanation
-2. Key concept
-3. How to approach similar questions`);
-            
-            alert(explain);
         }
 
         async function callAI(prompt) {
@@ -502,8 +954,12 @@ Provide:
 
         function goToStep(step) {
             document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-            document.getElementById('step' + step).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const stepId = typeof step === 'number' ? 'step' + step : step;
+            const element = document.getElementById(stepId);
+            if (element) {
+                element.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
     </script>
 </body>
